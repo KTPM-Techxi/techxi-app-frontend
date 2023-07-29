@@ -2,16 +2,22 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
+import { useDispatch } from 'react-redux';
+import { setDestination, setOrigin } from '../slices/navSlice';
+import { useNavigation } from '@react-navigation/native';
 
 const data = [
     {
         id: '123',
         icon: 'home',
         location: 'Home',
-        destination: 'London Eye, London, UK'
+        coords: null
     }
 ];
-const NavFavourites = () => {
+const NavFavourites = ({isOrigin = true}) => {
+    const dispatch = useDispatch();
+    const navigation = useNavigation();
+
     return (
         <FlatList
             data={data}
@@ -20,7 +26,26 @@ const NavFavourites = () => {
                 <View style={{ backgroundColor: '#a9a9a9', height: 0.5 }} />;
             }}
             renderItem={({ item: { location, destination, icon } }) => (
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={()=>{
+                    if(isOrigin){
+                        dispatch(
+                                setOrigin({
+                                    location: data.coords,
+                                    description: data.location
+                                })
+                            );
+                            dispatch(setDestination(null))
+                            navigation.navigate('MapScreen');
+                    }else{
+                        dispatch(
+                                setDestination({
+                                    location: details.geometry.location,
+                                    description: data.description
+                                })
+                            );
+                            navigation.navigate('RideOptionsCard');
+                    }
+                }}>
                     <Icon
                         style={styles.favorite}
                         name={icon}

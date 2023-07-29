@@ -4,11 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from './AuthStack';
 import CustomerStack from './CustomerStack';
 import DriverStack from './DriverStack';
-// import { selectType } from '../slices/authSlice';
+import { selectType } from '../slices/authSlice';
 
 export default RootNav = () => {
-    // const userType = selectType();
-    const userType = true;
+    const userType = selectType();
     const loggedin = userType != null;
     if (loggedin) {
         if (userType) {
