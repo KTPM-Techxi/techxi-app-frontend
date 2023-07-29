@@ -13,7 +13,7 @@ const HomeScreen = () => {
 
     return (
         <SafeAreaView style={styles.bg}>
-            <View style={{ padding: 5, flex: 0.5 }}>
+            <View style={{ padding: 5, flex: 0.7 }}>
                 <Image
                     style={styles.logo}
                     source={{
@@ -50,7 +50,7 @@ const HomeScreen = () => {
                 />
                 <NavFavourites isOrigin={true} />
             </View>
-            <View style={{ flex: 0.5 }}>{/* userprofile */}</View>
+            <View style={{ flex: 0.3 }}>{/* userprofile */}</View>
         </SafeAreaView>
     );
 };

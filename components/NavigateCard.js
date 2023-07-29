@@ -13,6 +13,14 @@ const NavigateCard = () => {
 
     return (
         <SafeAreaView style={styles.bg}>
+        <TouchableOpacity
+                onPress={() => {
+                    // Open modal
+                    //Add location to redux
+                }}
+                style={styles.menu}>
+                <Icon name="menu" />
+            </TouchableOpacity>
             <Text style={styles.greeting}>Hello, User</Text>
             <View style={styles.panel}>
                 <View>
@@ -43,7 +51,6 @@ const NavigateCard = () => {
                                     description: data.description
                                 })
                             );
-                            navigation.navigate('RideOptionsCard');
                         }}
                         query={{
                             key: 'API KEY HERE',
@@ -105,5 +112,23 @@ const styles = StyleSheet.create({
         paddingHorizontal: 4,
         paddingVertical: 3,
         justifyContent: 'space-between'
+    },
+    menu: {
+        position: 'absolute',
+        top: -15,
+        right: 8,
+        backgroundColor: '#a9a9a9',
+        zIndex: 50,
+        padding: 3,
+        borderRadius: 50,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+
+        elevation: 6
     }
 });

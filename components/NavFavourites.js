@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setDestination, setOrigin } from '../slices/navSlice';
 import { useNavigation } from '@react-navigation/native';
 
+// Get data from redux
 const data = [
     {
         id: '123',

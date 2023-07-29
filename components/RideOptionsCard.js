@@ -43,6 +43,14 @@ const RideOptionsCard = () => {
 
     return (
         <SafeAreaView style={{ backgroundColor: '#ffffff', flexGrow: 1 }}>
+         <TouchableOpacity
+                onPress={() => {
+                    // Open modal
+                    //Add location to redux
+                }}
+                style={styles.menu}>
+                <Icon name="menu" />
+            </TouchableOpacity>
             <View>
                 <TouchableOpacity
                     onPress={() => {
@@ -111,5 +119,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 10
+    },
+    menu: {
+        position: 'absolute',
+        top: 16,
+        left: 8,
+        backgroundColor: '#a9a9a9',
+        zIndex: 50,
+        padding: 3,
+        borderRadius: 50,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+
+        elevation: 6
     }
 });
