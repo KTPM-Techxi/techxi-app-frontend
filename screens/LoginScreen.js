@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, SafeAreaView, Keyboard, Alert, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, SafeAreaView, Keyboard, Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import Loader from '../components/Loader';
 import InputField from '../components/InputField';
 import CustomButton from '../components/CustomButton';
@@ -59,19 +58,20 @@ const LoginScreen = ({ navigation }) => {
         setErrors((prevState) => ({ ...prevState, [input]: error }));
     };
     return (
-        <SafeAreaView style={{ backgroundColor: COLORS.white, flex: 1 }}>
+        <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
             <Loader visible={loading} />
 
             <View style={{ paddingTop: 50, paddingHorizontal: 20 }}>
                 <Text style={{ color: 'black', fontSize: 40, fontWeight: 'bold' }}>Log In</Text>
+                <Text>{type}</Text>
                 {show && (
                     <>
                         <TouchableOpacity
                             onPress={() => setShow(false)}
                             style={styles.menu}>
                             <Icon
-                                name="menu-;eft"
-                                type="material-community"
+                                name="chevron-left"
+                                type="fontawesome"
                             />
                         </TouchableOpacity>
                         <Text style={{ color: '#BABBC3', fontSize: 18, marginVertical: 10 }}>

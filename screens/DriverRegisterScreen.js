@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 import {
   View,
@@ -96,7 +95,7 @@ const DriverRegisterScreen = ({navigation}) => {
           Register
         </Text>
         <Text style={{color: '#BABBC3', fontSize: 18, marginVertical: 10}}>
-          Enter Your Details to Register
+          Enter Your Details to Register for driver
         </Text>
         <View style={{marginVertical: 20}}>
           <InputField

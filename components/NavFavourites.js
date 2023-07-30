@@ -1,6 +1,5 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
 import React from 'react';
-import { FlatList } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { setDestination, setOrigin } from '../slices/navSlice';
@@ -11,8 +10,9 @@ const data = [
     {
         id: '123',
         icon: 'home',
-        location: 'Home',
-        coords: null
+        name: 'Home',
+        description: '466 street',
+        coords: null,
     }
 ];
 const NavFavourites = ({isOrigin = true}) => {
@@ -26,13 +26,13 @@ const NavFavourites = ({isOrigin = true}) => {
             ItemSeparatorComponent={() => {
                 <View style={{ backgroundColor: '#a9a9a9', height: 0.5 }} />;
             }}
-            renderItem={({ item: { location, destination, icon } }) => (
+            renderItem={({ item: { coords, description, icon, name } }) => (
                 <TouchableOpacity style={styles.button} onPress={()=>{
                     if(isOrigin){
                         dispatch(
                                 setOrigin({
-                                    location: data.coords,
-                                    description: data.location
+                                    location: coords,
+                                    description: description
                                 })
                             );
                             dispatch(setDestination(null))
@@ -40,8 +40,8 @@ const NavFavourites = ({isOrigin = true}) => {
                     }else{
                         dispatch(
                                 setDestination({
-                                    location: details.geometry.location,
-                                    description: data.description
+                                    location: coords,
+                                    description: description
                                 })
                             );
                             navigation.navigate('RideOptionsCard');
@@ -54,8 +54,8 @@ const NavFavourites = ({isOrigin = true}) => {
                         size={18}
                     />
                     <View>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{location}</Text>
-                        <Text style={{ color: '#a9a9a9' }}>{destination}</Text>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{name}</Text>
+                        <Text style={{ color: '#a9a9a9' }}>{description}</Text>
                     </View>
                 </TouchableOpacity>
             )}
