@@ -10,10 +10,10 @@ const data = [
     {
         id: '123',
         name: 'Home',
-        description: '466 street',
+        description: 'Trường THPT Mạc Đĩnh Chi',
         coords: {
-            longitude: 0,
-            latitude: 0
+            lng: 106.6346505,
+            lat: 10.7547937
         },
     }
 ];

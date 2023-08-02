@@ -25,7 +25,7 @@ const data = [
     {
         id: 'Uber-XL-123',
         title: 'Uder XL',
-        multiplier: 1.2,
+        multiplier: 1.25,
         image: 'https://links.papareact.com/5W8'
     },
     {
@@ -40,23 +40,30 @@ const RideOptionsCard = () => {
     const navigation = useNavigation();
     const [selected, setSelected] = useState(null);
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-
+    let price = (travelTimeInformation?.duration?.value * SURGE_RATE) / 25;
     return (
         <SafeAreaView style={{ backgroundColor: '#ffffff', flexGrow: 1 }}>
-         <TouchableOpacity
+            {/* <TouchableOpacity
                 onPress={() => {
                     // Open modal
                     //Add destination to redux
                 }}
                 style={styles.menu}>
                 <Icon name="menu" />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <View>
                 <TouchableOpacity
                     onPress={() => {
                         navigation.navigate('NavigateCard');
                     }}
-                    style={{ position: 'absolute', top: 3, left: 5, padding: 3, borderRadius: 50 }}>
+                    style={{
+                        position: 'absolute',
+                        top: 3,
+                        left: 5,
+                        padding: 3,
+                        borderRadius: 50,
+                        zIndex: 20
+                    }}>
                     <Icon
                         name="chevron-left"
                         type="fontawesome"
@@ -81,16 +88,13 @@ const RideOptionsCard = () => {
                             <Text style={{ fontSize: 30, fontWeight: 'bold' }}>{title}</Text>
                             <Text>{travelTimeInformation?.duration?.text}</Text>
                         </View>
-                        <Text style={{ fontSize: 30 }}>
+                        <Text style={{ fontSize: 20 }}>
                             {new Intl.NumberFormat('vi', {
                                 style: 'currency',
                                 currency: 'VND',
-                                minimumFractionDigits: 2,
+                                minimumFractionDigits: 3,
                                 maximumFractionDigits: 3
-                            }).format(
-                                (travelTimeInformation?.duration?.value * SURGE_RATE * multiplier) /
-                                    100
-                            )}
+                            }).format(price * multiplier)}
                         </Text>
                     </TouchableOpacity>
                 )}

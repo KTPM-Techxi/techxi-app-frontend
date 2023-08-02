@@ -6,7 +6,7 @@ import { setDestination } from '../slices/navSlice';
 import { useNavigation } from '@react-navigation/native';
 import NavFavourites from './NavFavourites';
 import { Icon } from 'react-native-elements';
-
+import {GOOGLE_MAP_APIKEY} from '@env'
 const NavigateCard = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
@@ -53,21 +53,15 @@ const NavigateCard = () => {
                             );
                         }}
                         query={{
-                            key: 'API KEY HERE',
+                            key: GOOGLE_MAP_APIKEY,
                             language: 'vn',
                             components: 'country:vn'
                         }}
                     />
                 </View>
                 <NavFavourites />
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        backgroundColor: 'white',
-                        justifyContent: 'space-evenly',
-                        paddingVertical: 2
-                    }}
-                    className="mt-auto border-t borger-gray-100">
+                <View style={{flexDirection:'row',justifyContent: 'center', paddingBottom:30}}
+                    >
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => {
@@ -102,16 +96,16 @@ const styles = StyleSheet.create({
     panel: {
         borderTopWidth: 1,
         borderColor: '#a9a9a9',
-        flexShrink: 1
+        flex: 1
     },
     button: {
         backgroundColor: 'black',
         borderRadius: 50,
         flexDirection: 'row',
-        width: 24,
-        paddingHorizontal: 4,
-        paddingVertical: 3,
-        justifyContent: 'space-between'
+        width: 150,
+        justifyContent:'space-around',
+        paddingVertical: 10,
+        paddingHorizontal:20
     },
     menu: {
         position: 'absolute',

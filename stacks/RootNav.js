@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 
 export default RootNav = () => {
-    const [initializing, setInitializing] = useState(true)
+    const [initializing, setInitializing] = useState(false)
     //check persistent login
     const checkLogin = async() =>{
         //Check firebase || mongo

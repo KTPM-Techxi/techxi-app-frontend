@@ -15,7 +15,7 @@ const HomeScreen = () => {
 
     return (
         <SafeAreaView style={styles.bg}>
-            <View style={{ padding: 5, flex: 0.7 }}>
+            <View style={{ padding: 5, flex: 0.8 }}>
                 <Image
                     style={styles.logo}
                     source={{
@@ -35,6 +35,7 @@ const HomeScreen = () => {
                     fetchDetails={true}
                     returnKeyType={'search'}
                     onPress={(data, details = null) => {
+                        
                         dispatch(
                             setOrigin({
                                 location: details.geometry.location,
@@ -42,6 +43,9 @@ const HomeScreen = () => {
                             })
                         );
                         dispatch(setDestination(null));
+                        console.log(details.geometry.location)
+
+                        console.log(data.description)
                         navigation.navigate('MapScreen');
                     }}
                     query={{
@@ -52,7 +56,7 @@ const HomeScreen = () => {
                 />
                 <NavFavourites isOrigin={true} />
             </View>
-            <View style={{ flex: 0.3 }}>
+            <View style={{ flex: 0.2 }}>
             <UserProfile/>
             </View>
         </SafeAreaView>

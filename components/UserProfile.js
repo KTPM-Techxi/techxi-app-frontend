@@ -1,25 +1,27 @@
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAll, selectType } from '../slices/authSlice';
+import { selectAll, setType } from '../slices/authSlice';
+import { Icon } from 'react-native-elements';
 
 const UserProfile = () => {
     const user = useSelector(selectAll);
     const [modalVisible, setModalVisible] = useState(false);
     const dispatch = useDispatch();
-    const logout = () =>{
+    const logout = () => {
         // Log out from firebase || mongo
 
         // null redux
-        dispatch(selectType(null))
-    }
+        dispatch(setType(null));
+    };
     return (
         <View style={styles.container}>
             <Modal
                 transparent={true}
                 visible={modalVisible}>
+                <View></View>
                 <TouchableOpacity
-                    style={{ flex: 1, justifyContent: 'center' }}
+                    style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
                     activeOpacity={1}
                     onPress={() => {
                         setModalVisible(false);
@@ -29,10 +31,20 @@ const UserProfile = () => {
                             backgroundColor: 'white',
                             borderWidth: 0.5,
                             paddingHorizontal: 20,
-                            paddingVertical: 10
+                            paddingVertical: 10,
+                            width: 200,
+                            shadowColor: '#000',
+                            shadowOffset: {
+                                width: 0,
+                                height: 3
+                            },
+                            shadowOpacity: 0.27,
+                            shadowRadius: 4.65,
+
+                            elevation: 6
                         }}>
                         <TouchableOpacity
-                        onPress={logout}
+                            onPress={logout}
                             style={{
                                 flexDirection: 'row',
                                 justifyContent: 'center',
@@ -47,11 +59,17 @@ const UserProfile = () => {
 
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>name here</Text>
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>phone here</Text>
+            <TouchableOpacity
+                onPress={() => {
+                    setModalVisible(true);
+                }}
+                style={styles.menu}>
+                <Icon name="menu" />
+            </TouchableOpacity>
 
-            {!(user?.type) &(
+            {!user?.type && (
                 <>
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>vehicle</Text>
-
+                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>vehicle</Text>
                 </>
             )}
         </View>
@@ -64,5 +82,23 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white'
+    },
+    menu: {
+        position: 'absolute',
+        top: -15,
+        right: 8,
+        backgroundColor: '#a9a9a9',
+        zIndex: 50,
+        padding: 3,
+        borderRadius: 50,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+
+        elevation: 6
     }
 });

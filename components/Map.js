@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDestination, selectOrigin, setTravelTimeInformation } from '../slices/navSlice';
@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import {GOOGLE_MAP_APIKEY} from '@env'
 
 const Map = () => {
+    const [load, setLoad] = useState(false)
     const origin = useSelector(selectOrigin);
     const destination = useSelector(selectDestination);
     const mapRef = useRef(null);
@@ -20,7 +21,7 @@ const Map = () => {
         mapRef.current.fitToSuppliedMarkers(['origin', 'destination'], {
             edgePadding: { top: 50, bottom: 50, left: 50, right: 50 }
         });
-    }, [origin, destination]);
+    }, [load]);
 
     useEffect(() => {
         if (!origin || !destination) return;
@@ -31,6 +32,7 @@ const Map = () => {
                 .then((res) => res.json())
                 .then((data) => {
                     dispatch(setTravelTimeInformation(data.rows[0].elements[0]));
+                    setLoad(prev => !prev)
                 });
         };
         getTravelTime();
@@ -42,8 +44,8 @@ const Map = () => {
             style={{ flex: 1 }}
             mapType="mutedStandard"
             initialRegion={{
-                latitude: origin.location.latitude,
-                longitude: origin.location.longitude,
+                latitude: origin.location.lat,
+                longitude: origin.location.lng,
                 longitudeDelta: 0.005,
                 latitudeDelta: 0.005
             }}>
@@ -59,8 +61,8 @@ const Map = () => {
             {origin?.location && (
                 <Marker
                     coordinate={{
-                        latitude: origin.location.latitude,
-                        longitude: origin.location.longitude
+                        latitude: origin.location.lat,
+                        longitude: origin.location.lng
                     }}
                     title="Origin"
                     description={origin.description}
@@ -71,8 +73,8 @@ const Map = () => {
             {destination?.location && (
                 <Marker
                     coordinate={{
-                        latitude: destination.location.latitude,
-                        longitude: destination.location.longitude
+                        latitude: destination.location.lat,
+                        longitude: destination.location.lng
                     }}
                     title="Destination"
                     description={destination.description}
