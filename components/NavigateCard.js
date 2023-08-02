@@ -13,7 +13,7 @@ const NavigateCard = () => {
 
     return (
         <SafeAreaView style={styles.bg}>
-        <TouchableOpacity
+            <TouchableOpacity
                 onPress={() => {
                     // Open modal
                     //Add location to redux

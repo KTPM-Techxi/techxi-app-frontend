@@ -6,13 +6,38 @@ import CustomerStack from './CustomerStack';
 import DriverStack from './DriverStack';
 import { selectType } from '../slices/authSlice';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useEffect } from 'react';
+
 
 export default RootNav = () => {
-    console.log('dafsdasd')
+    const [initializing, setInitializing] = useState(true)
+    //check persistent login
+    const checkLogin = async() =>{
+        //Check firebase || mongo
+
+        // Update redux
+
+        
+        setInitializing(false)
+    }
+
+    useEffect(()=>{
+        checkLogin()
+    },[])
+    
+
+
+    if(initializing) return null;
+
     let userType = useSelector(selectType);
     if(!userType) userType = null
     const loggedin = userType != null;
-    console.log(userType + ' ' + loggedin)
+
+
+
+
+
     if (loggedin) {
         if (userType) {
             return <CustomerStack />;

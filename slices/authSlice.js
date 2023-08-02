@@ -33,5 +33,6 @@ export const selectName = (state) => state.auth.name;
 export const selecPhoneNumber = (state) => state.auth.phoneNumber;
 export const selectVehicle = (state) => state.auth.vehicle;
 export const selectType = (state) => state.auth.type;
+export const selectAll = (state) => state.auth;
 
 export default authSlice.reducer;

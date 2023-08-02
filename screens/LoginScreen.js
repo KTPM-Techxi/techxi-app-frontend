@@ -1,5 +1,13 @@
-import React, { useState } from 'react';
-import { View, Text, SafeAreaView, Keyboard, Alert, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {
+    View,
+    Text,
+    SafeAreaView,
+    Keyboard,
+    Alert,
+    StyleSheet,
+    TouchableOpacity
+} from 'react-native';
 import Loader from '../components/Loader';
 import InputField from '../components/InputField';
 import CustomButton from '../components/CustomButton';
@@ -14,7 +22,15 @@ const LoginScreen = ({ navigation }) => {
 
     const [type, setType_] = useState('');
     const [show, setShow] = useState(false);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        setLoading(true);
+
+        // persistant login
+
+        setLoading(false);
+    }, []);
 
     const validate = async () => {
         Keyboard.dismiss();
@@ -44,9 +60,8 @@ const LoginScreen = ({ navigation }) => {
             //Login user
             //Get user type
 
-
-            //set user type redux
-            dispatch(setType(true))
+            //set user data redux
+            dispatch(setType(true));
         }, 3000);
     };
 

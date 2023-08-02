@@ -46,7 +46,7 @@ const RideOptionsCard = () => {
          <TouchableOpacity
                 onPress={() => {
                     // Open modal
-                    //Add location to redux
+                    //Add destination to redux
                 }}
                 style={styles.menu}>
                 <Icon name="menu" />
@@ -122,8 +122,8 @@ const styles = StyleSheet.create({
     },
     menu: {
         position: 'absolute',
-        top: 16,
-        left: 8,
+        top: -16,
+        right: 8,
         backgroundColor: '#a9a9a9',
         zIndex: 50,
         padding: 3,

@@ -5,14 +5,16 @@ import { useDispatch } from 'react-redux';
 import { setDestination, setOrigin } from '../slices/navSlice';
 import { useNavigation } from '@react-navigation/native';
 
-// Get data from redux
+// Get data
 const data = [
     {
         id: '123',
-        icon: 'home',
         name: 'Home',
         description: '466 street',
-        coords: null,
+        coords: {
+            longitude: 0,
+            latitude: 0
+        },
     }
 ];
 const NavFavourites = ({isOrigin = true}) => {
@@ -47,13 +49,8 @@ const NavFavourites = ({isOrigin = true}) => {
                             navigation.navigate('RideOptionsCard');
                     }
                 }}>
-                    <Icon
-                        style={styles.favorite}
-                        name={icon}
-                        color="white"
-                        size={18}
-                    />
-                    <View>
+                 
+                    <View style={{flex: 1, justifyContent: 'space-between'}}>
                         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{name}</Text>
                         <Text style={{ color: '#a9a9a9' }}>{description}</Text>
                     </View>
@@ -72,5 +69,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#a9a9a9',
         padding: 3
     },
-    button: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 5 }
+    button: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 5 }
 });
