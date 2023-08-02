@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     },
     menu: {
         position: 'absolute',
-        top: -16,
+        top: -15,
         right: 8,
         backgroundColor: '#a9a9a9',
         zIndex: 50,

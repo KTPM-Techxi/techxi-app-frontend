@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { setDestination, setOrigin } from '../slices/navSlice';
 import NavFavourites from '../components/NavFavourites';
 import { useNavigation } from '@react-navigation/native';
+import UserProfile from '../components/UserProfile';
+import {GOOGLE_MAP_APIKEY} from '@env'
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
@@ -43,14 +45,16 @@ const HomeScreen = () => {
                         navigation.navigate('MapScreen');
                     }}
                     query={{
-                        key: 'API KEY HERE PLS',
+                        key: GOOGLE_MAP_APIKEY,
                         language: 'vn',
                         components: 'country:vn'
                     }}
                 />
                 <NavFavourites isOrigin={true} />
             </View>
-            <View style={{ flex: 0.3 }}>{/* userprofile */}</View>
+            <View style={{ flex: 0.3 }}>
+            <UserProfile/>
+            </View>
         </SafeAreaView>
     );
 };

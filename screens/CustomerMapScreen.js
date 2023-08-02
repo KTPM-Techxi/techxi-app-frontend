@@ -30,6 +30,10 @@ const CustomerMapScreen = () => {
                         name="RideOptionsCard"
                         component={RideOptionsCard}
                     />
+                    <mStack.Screen
+                        name="InProgress"
+                        component={RideOptionsCard}
+                    />
                 </mStack.Navigator>
             </View>
         </View>

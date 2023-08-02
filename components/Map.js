@@ -6,6 +6,7 @@ import { selectDestination, selectOrigin, setTravelTimeInformation } from '../sl
 import MapViewDirections from 'react-native-maps-directions';
 import { useRef } from 'react';
 import { useEffect } from 'react';
+import {GOOGLE_MAP_APIKEY} from '@env'
 
 const Map = () => {
     const origin = useSelector(selectOrigin);
@@ -25,7 +26,7 @@ const Map = () => {
         if (!origin || !destination) return;
         const getTravelTime = async () => {
             //Insert API KEY HERE
-            const URL = `https://maps.googleapis.com/maps/api/distancematrix/json?destinations=${destination.description}&origins=${origin.description}&key=YOUR_API_KEY`;
+            const URL = `https://maps.googleapis.com/maps/api/distancematrix/json?destinations=${destination.description}&origins=${origin.description}&key=${GOOGLE_MAP_APIKEY}`;
             fetch(URL)
                 .then((res) => res.json())
                 .then((data) => {
@@ -50,7 +51,7 @@ const Map = () => {
                 <MapViewDirections
                     origin={origin.description}
                     destination={destination.description}
-                    apikey="API KEY HERE PLS"
+                    apikey={GOOGLE_MAP_APIKEY}
                     strokeColor="black"
                     strokeWidth={3}
                 />
