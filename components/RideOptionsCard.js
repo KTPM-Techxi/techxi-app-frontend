@@ -15,7 +15,7 @@ import { selectTravelTimeInformation } from '../slices/navSlice';
 
 const SURGE_RATE = 1.5;
 
-const data = [
+const ReduxData = [
     {
         id: 'Uber-X-123',
         title: 'Uder X',
@@ -27,12 +27,6 @@ const data = [
         title: 'Uder XL',
         multiplier: 1.25,
         image: 'https://links.papareact.com/5W8'
-    },
-    {
-        id: 'Uber-XXL-123',
-        title: 'Uder XXL',
-        multiplier: 1.5,
-        image: 'https://links.papareact.com/7pf'
     }
 ];
 
@@ -40,18 +34,26 @@ const RideOptionsCard = () => {
     const navigation = useNavigation();
     const [selected, setSelected] = useState(null);
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
-    let price = (travelTimeInformation?.duration?.value * SURGE_RATE) / 25;
+    let _price = (travelTimeInformation?.duration?.value * SURGE_RATE) / 25;
+    let data = ReduxData.map((item) => {
+        return {
+            id: item.id,
+            title: item.title,
+            image: item.image,
+            price: (_price * item.multiplier).toFixed(0)
+        };
+    });
     return (
         <SafeAreaView style={{ backgroundColor: '#ffffff', flexGrow: 1 }}>
-            {/* <TouchableOpacity
+            <TouchableOpacity
                 onPress={() => {
                     // Open modal
                     //Add destination to redux
                 }}
                 style={styles.menu}>
                 <Icon name="menu" />
-            </TouchableOpacity> */}
-            <View>
+            </TouchableOpacity>
+            <View style={{ borderBottomColor: '#a9a9a9', borderBottomWidth: 1 }}>
                 <TouchableOpacity
                     onPress={() => {
                         navigation.navigate('NavigateCard');
@@ -76,7 +78,7 @@ const RideOptionsCard = () => {
             <FlatList
                 data={data}
                 keyExtractor={(item) => item.id}
-                renderItem={({ item: { id, title, multiplier, image }, item }) => (
+                renderItem={({ item: { id, title, price, image }, item }) => (
                     <TouchableOpacity
                         style={[id === selected?.id && { backgroundColor: '#a9a9a9' }, styles.tab]}
                         onPress={() => setSelected(item)}>
@@ -94,7 +96,7 @@ const RideOptionsCard = () => {
                                 currency: 'VND',
                                 minimumFractionDigits: 3,
                                 maximumFractionDigits: 3
-                            }).format(price * multiplier)}
+                            }).format(price)}
                         </Text>
                     </TouchableOpacity>
                 )}
@@ -102,6 +104,9 @@ const RideOptionsCard = () => {
             <View className="mt-auto border-t border-gray-200">
                 <TouchableOpacity
                     disabled={!selected}
+                    onPress={()=>{
+                        navigation.navigate('InProgress')
+                    }}
                     style={[
                         { backgroundColor: 'black', paddingVertical: 3, margin: 3 },
                         !selected && { backgroundColor: '#a9a9a9' }
@@ -126,7 +131,7 @@ const styles = StyleSheet.create({
     },
     menu: {
         position: 'absolute',
-        top: -15,
+        top: 2,
         right: 8,
         backgroundColor: '#a9a9a9',
         zIndex: 50,

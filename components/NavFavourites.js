@@ -28,8 +28,8 @@ const NavFavourites = ({isOrigin = true}) => {
             ItemSeparatorComponent={() => {
                 <View style={{ backgroundColor: '#a9a9a9', height: 0.5 }} />;
             }}
-            renderItem={({ item: { coords, description, icon, name } }) => (
-                <TouchableOpacity style={styles.button} onPress={()=>{
+            renderItem={({ item: { coords, description,name } }) => (
+                <TouchableOpacity style={{paddingLeft:40}} onPress={()=>{
                     if(isOrigin){
                         dispatch(
                                 setOrigin({
@@ -46,12 +46,13 @@ const NavFavourites = ({isOrigin = true}) => {
                                     description: description
                                 })
                             );
+                            console.log(coords)
                             navigation.navigate('RideOptionsCard');
                     }
                 }}>
                  
-                    <View style={{flex: 1, justifyContent: 'space-between'}}>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{name}</Text>
+                    <View style={{flex: 1}}>
+                        <Text style={{ fontSize: 18, fontWeight: 500 }}>{name}</Text>
                         <Text style={{ color: '#a9a9a9' }}>{description}</Text>
                     </View>
                 </TouchableOpacity>
@@ -69,5 +70,4 @@ const styles = StyleSheet.create({
         backgroundColor: '#a9a9a9',
         padding: 3
     },
-    button: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 5 }
 });

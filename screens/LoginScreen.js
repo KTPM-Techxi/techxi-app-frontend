@@ -77,7 +77,7 @@ const LoginScreen = ({ navigation }) => {
             <Loader visible={loading} />
 
             <View style={{ paddingTop: 50, paddingHorizontal: 20 }}>
-                <Text style={{ color: 'black', fontSize: 40, fontWeight: 'bold' }}>Log In</Text>
+                <Text style={{ color: 'black', fontSize: 40, fontWeight: 'bold', width: '100%', textAlign:'center'}}>Log In</Text>
                 <Text>{type}</Text>
                 {show && (
                     <>
@@ -162,21 +162,13 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     menu: {
         position: 'absolute',
-        top: 16,
-        left: 8,
-        backgroundColor: '#a9a9a9',
+        top: 65,
+        left: 20,
         zIndex: 50,
         padding: 3,
         borderRadius: 50,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 3
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
+        borderWidth:.5
 
-        elevation: 6
     }
 });
 

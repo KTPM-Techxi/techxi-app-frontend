@@ -85,20 +85,11 @@ const styles = StyleSheet.create({
     },
     menu: {
         position: 'absolute',
-        top: -15,
-        right: 8,
-        backgroundColor: '#a9a9a9',
+        top: 5,
+        right: 20,
         zIndex: 50,
         padding: 3,
         borderRadius: 50,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 3
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-
-        elevation: 6
+      
     }
 });

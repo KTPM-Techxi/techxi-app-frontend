@@ -59,8 +59,11 @@ const NavigateCard = () => {
                         }}
                     />
                 </View>
-                <NavFavourites />
-                <View style={{flexDirection:'row',justifyContent: 'center', paddingBottom:30}}
+                <View style={{height: 200}}>
+                <NavFavourites isOrigin={false}/>
+
+                </View>
+                <View style={{flexDirection:'row',justifyContent: 'center', paddingBottom: 30}}
                     >
                     <TouchableOpacity
                         style={styles.button}
@@ -109,7 +112,7 @@ const styles = StyleSheet.create({
     },
     menu: {
         position: 'absolute',
-        top: -15,
+        top: 2,
         right: 8,
         backgroundColor: '#a9a9a9',
         zIndex: 50,

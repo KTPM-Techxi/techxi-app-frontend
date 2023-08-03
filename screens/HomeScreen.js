@@ -25,7 +25,11 @@ const HomeScreen = () => {
                 <GooglePlacesAutocomplete
                     styles={{
                         container: { flex: 0 },
-                        textInput: { fontSize: 18 }
+                        textInput: {
+                                fontSize: 18,
+                                backgroundColor: '#dddddf',
+                                borderRadius: 0
+                            },
                     }}
                     minLength={2}
                     enablePoweredByContainer={false}
@@ -54,7 +58,11 @@ const HomeScreen = () => {
                         components: 'country:vn'
                     }}
                 />
-                <NavFavourites isOrigin={true} />
+                <View style={{flexDirection:'column', paddingTop:20}}>
+                <Text style={{fontSize: 25, fontWeight: 'bold'}}>Favprite places </Text>
+                <View style={{height:5,marginHorizontal:20, borderBottomWidth:1, borderColor:'#dddddf'}}></View>
+                <NavFavourites/>
+                </View>
             </View>
             <View style={{ flex: 0.2 }}>
             <UserProfile/>

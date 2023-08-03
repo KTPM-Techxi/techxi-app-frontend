@@ -10,7 +10,7 @@ const Loader = ({visible = false}) => {
   const {width, height} = useWindowDimensions();
   return (
     visible && (
-      <View style={[style.container, {height, width}]}>
+      <View style={[style.container, {height: height + 100, width}]}>
         <View style={style.loader}>
           <ActivityIndicator size="large" color='#5D5FEE' />
           <Text style={{marginLeft: 10, fontSize: 16}}>Loading...</Text>

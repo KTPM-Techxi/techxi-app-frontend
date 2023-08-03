@@ -7,6 +7,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import {GOOGLE_MAP_APIKEY} from '@env'
+import { Icon } from 'react-native-elements';
 
 const Map = () => {
     const [load, setLoad] = useState(false)
@@ -79,7 +80,9 @@ const Map = () => {
                     title="Destination"
                     description={destination.description}
                     identifier="destination"
-                />
+                >
+                    <Icon  name="flag" type='fontawesome' color={'#ff0f0f'} size={36}/>
+                </Marker>
             )}
         </MapView>
     );

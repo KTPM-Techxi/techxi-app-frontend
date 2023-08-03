@@ -6,6 +6,7 @@ import NavigateCard from '../components/NavigateCard';
 import RideOptionsCard from '../components/RideOptionsCard';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
+import UserProgress from '../components/UserProgress';
 
 const CustomerMapScreen = () => {
     const mStack = createNativeStackNavigator();
@@ -32,7 +33,7 @@ const CustomerMapScreen = () => {
                     />
                     <mStack.Screen
                         name="InProgress"
-                        component={RideOptionsCard}
+                        component={UserProgress}
                     />
                 </mStack.Navigator>
             </View>
@@ -45,7 +46,7 @@ export default CustomerMapScreen;
 const styles = StyleSheet.create({
     menu: {
         position: 'absolute',
-        top: 16,
+        top: 35,
         left: 8,
         backgroundColor: '#a9a9a9',
         zIndex: 50,
