@@ -45,8 +45,10 @@ const LoginScreen = ({ navigation }) => {
         }
         if (isValid) {
             if (type == 'customer') {
+                setType_('customer');
                 login();
             } else if (type == 'driver') {
+                setType_('driver');
                 login();
             }
         }
@@ -61,8 +63,8 @@ const LoginScreen = ({ navigation }) => {
             //Get user type
 
             //set user data redux
-            dispatch(setType(true));
-        }, 3000);
+            dispatch(setType(type));
+        }, 1000);
     };
 
     const handleOnchange = (text, input) => {
@@ -77,7 +79,16 @@ const LoginScreen = ({ navigation }) => {
             <Loader visible={loading} />
 
             <View style={{ paddingTop: 50, paddingHorizontal: 20 }}>
-                <Text style={{ color: 'black', fontSize: 40, fontWeight: 'bold', width: '100%', textAlign:'center'}}>Log In</Text>
+                <Text
+                    style={{
+                        color: 'black',
+                        fontSize: 40,
+                        fontWeight: 'bold',
+                        width: '100%',
+                        textAlign: 'center'
+                    }}>
+                    Log In
+                </Text>
                 <Text>{type}</Text>
                 {show && (
                     <>
@@ -167,8 +178,7 @@ const styles = StyleSheet.create({
         zIndex: 50,
         padding: 3,
         borderRadius: 50,
-        borderWidth:.5
-
+        borderWidth: 0.5
     }
 });
 

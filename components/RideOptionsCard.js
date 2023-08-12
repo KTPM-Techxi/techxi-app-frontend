@@ -104,8 +104,8 @@ const RideOptionsCard = () => {
             <View className="mt-auto border-t border-gray-200">
                 <TouchableOpacity
                     disabled={!selected}
-                    onPress={()=>{
-                        navigation.navigate('InProgress')
+                    onPress={() => {
+                        navigation.navigate('InProgress');
                     }}
                     style={[
                         { backgroundColor: 'black', paddingVertical: 3, margin: 3 },

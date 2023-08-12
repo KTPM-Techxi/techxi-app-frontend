@@ -6,11 +6,11 @@ import { selectDestination, selectOrigin, setTravelTimeInformation } from '../sl
 import MapViewDirections from 'react-native-maps-directions';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-import {GOOGLE_MAP_APIKEY} from '@env'
+import { GOOGLE_MAP_APIKEY } from '@env';
 import { Icon } from 'react-native-elements';
 
 const Map = () => {
-    const [load, setLoad] = useState(false)
+    const [load, setLoad] = useState(false);
     const origin = useSelector(selectOrigin);
     const destination = useSelector(selectDestination);
     const mapRef = useRef(null);
@@ -32,8 +32,8 @@ const Map = () => {
             fetch(URL)
                 .then((res) => res.json())
                 .then((data) => {
-                    dispatch(setTravelTimeInformation(data.rows[0].elements[0]));
-                    setLoad(prev => !prev)
+                    dispatch(setTravelTimeInformation(data?.rows[0]?.elements[0]));
+                    setLoad((prev) => !prev);
                 });
         };
         getTravelTime();
@@ -68,7 +68,6 @@ const Map = () => {
                     title="Origin"
                     description={origin.description}
                     identifier="origin"
-                    
                 />
             )}
             {destination?.location && (
@@ -79,9 +78,13 @@ const Map = () => {
                     }}
                     title="Destination"
                     description={destination.description}
-                    identifier="destination"
-                >
-                    <Icon  name="flag" type='fontawesome' color={'#ff0f0f'} size={36}/>
+                    identifier="destination">
+                    <Icon
+                        name="flag"
+                        type="fontawesome"
+                        color={'#ff0f0f'}
+                        size={36}
+                    />
                 </Marker>
             )}
         </MapView>

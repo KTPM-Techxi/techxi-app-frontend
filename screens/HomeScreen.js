@@ -7,7 +7,7 @@ import { setDestination, setOrigin } from '../slices/navSlice';
 import NavFavourites from '../components/NavFavourites';
 import { useNavigation } from '@react-navigation/native';
 import UserProfile from '../components/UserProfile';
-import {GOOGLE_MAP_APIKEY} from '@env'
+import { GOOGLE_MAP_APIKEY } from '@env';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
@@ -26,10 +26,10 @@ const HomeScreen = () => {
                     styles={{
                         container: { flex: 0 },
                         textInput: {
-                                fontSize: 18,
-                                backgroundColor: '#dddddf',
-                                borderRadius: 0
-                            },
+                            fontSize: 18,
+                            backgroundColor: '#dddddf',
+                            borderRadius: 0
+                        }
                     }}
                     minLength={2}
                     enablePoweredByContainer={false}
@@ -39,7 +39,6 @@ const HomeScreen = () => {
                     fetchDetails={true}
                     returnKeyType={'search'}
                     onPress={(data, details = null) => {
-                        
                         dispatch(
                             setOrigin({
                                 location: details.geometry.location,
@@ -47,9 +46,9 @@ const HomeScreen = () => {
                             })
                         );
                         dispatch(setDestination(null));
-                        console.log(details.geometry.location)
+                        console.log(details.geometry.location);
 
-                        console.log(data.description)
+                        console.log(data.description);
                         navigation.navigate('MapScreen');
                     }}
                     query={{
@@ -58,14 +57,20 @@ const HomeScreen = () => {
                         components: 'country:vn'
                     }}
                 />
-                <View style={{flexDirection:'column', paddingTop:20}}>
-                <Text style={{fontSize: 25, fontWeight: 'bold'}}>Favprite places </Text>
-                <View style={{height:5,marginHorizontal:20, borderBottomWidth:1, borderColor:'#dddddf'}}></View>
-                <NavFavourites/>
+                <View style={{ flexDirection: 'column', paddingTop: 20 }}>
+                    <Text style={{ fontSize: 25, fontWeight: 'bold' }}>Favprite places </Text>
+                    <View
+                        style={{
+                            height: 5,
+                            marginHorizontal: 20,
+                            borderBottomWidth: 1,
+                            borderColor: '#dddddf'
+                        }}></View>
+                    <NavFavourites />
                 </View>
             </View>
             <View style={{ flex: 0.2 }}>
-            <UserProfile/>
+                <UserProfile />
             </View>
         </SafeAreaView>
     );

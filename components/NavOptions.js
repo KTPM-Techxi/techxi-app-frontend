@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 import React from 'react';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         paddingLeft: 6,
         paddingBottom: 8,
         paddingTop: 4,
-        backgroundColor: '#fff8dc',
+        // backgroundColor: '#fff8dc',
         margin: 2,
         width: 40
     },

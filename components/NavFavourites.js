@@ -14,10 +14,10 @@ const data = [
         coords: {
             lng: 106.6346505,
             lat: 10.7547937
-        },
+        }
     }
 ];
-const NavFavourites = ({isOrigin = true}) => {
+const NavFavourites = ({ isOrigin = true }) => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
 
@@ -28,30 +28,31 @@ const NavFavourites = ({isOrigin = true}) => {
             ItemSeparatorComponent={() => {
                 <View style={{ backgroundColor: '#a9a9a9', height: 0.5 }} />;
             }}
-            renderItem={({ item: { coords, description,name } }) => (
-                <TouchableOpacity style={{paddingLeft:40}} onPress={()=>{
-                    if(isOrigin){
-                        dispatch(
+            renderItem={({ item: { coords, description, name } }) => (
+                <TouchableOpacity
+                    style={{ paddingLeft: 40 }}
+                    onPress={() => {
+                        if (isOrigin) {
+                            dispatch(
                                 setOrigin({
                                     location: coords,
                                     description: description
                                 })
                             );
-                            dispatch(setDestination(null))
+                            dispatch(setDestination(null));
                             navigation.navigate('MapScreen');
-                    }else{
-                        dispatch(
+                        } else {
+                            dispatch(
                                 setDestination({
                                     location: coords,
                                     description: description
                                 })
                             );
-                            console.log(coords)
+                            console.log(coords);
                             navigation.navigate('RideOptionsCard');
-                    }
-                }}>
-                 
-                    <View style={{flex: 1}}>
+                        }
+                    }}>
+                    <View style={{ flex: 1 }}>
                         <Text style={{ fontSize: 18, fontWeight: 500 }}>{name}</Text>
                         <Text style={{ color: '#a9a9a9' }}>{description}</Text>
                     </View>
@@ -69,5 +70,5 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         backgroundColor: '#a9a9a9',
         padding: 3
-    },
+    }
 });

@@ -5,50 +5,76 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { useDispatch } from 'react-redux';
 import { setDestination, setOrigin } from '../slices/navSlice';
 import NavFavourites from '../components/NavFavourites';
+import { useNavigation } from '@react-navigation/native';
+import UserProfile from '../components/UserProfile';
+import { GOOGLE_MAP_APIKEY } from '@env';
 
 const DriverHomeScreen = () => {
     const dispatch = useDispatch();
+    const navigation = useNavigation();
 
     return (
-        <SafeAreaView style={styles.bg}>
-            <View style={{ padding: 5 }}>
-                <Image
-                    style={Style}
-                    source={{
-                        uri: 'https://links.papareact.com/gzs'
+        <SafeAreaView className="bg-white flex-1">
+            <View className="p-2">
+                <View className="flex flex-row gap-2 items-center">
+                    <Image
+                        style={styles.logo}
+                        source={{
+                            uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Grab_%28application%29_logo.svg/2560px-Grab_%28application%29_logo.svg.png'
+                        }}
+                    />
+                    <Text className="text-sm">Welcome back Minh</Text>
+                </View>
+                <GooglePlacesAutocomplete
+                    styles={{
+                        container: { flex: 0 },
+                        textInput: {
+                            fontSize: 18,
+                            backgroundColor: '#dddddf',
+                            borderRadius: 0
+                        }
+                    }}
+                    minLength={2}
+                    enablePoweredByContainer={false}
+                    nearbyPlacesAPI="GooglePlacesSearch"
+                    debounce={400}
+                    placeholder="Where from?"
+                    fetchDetails={true}
+                    returnKeyType={'search'}
+                    onPress={(data, details = null) => {
+                        dispatch(
+                            setOrigin({
+                                location: details.geometry.location,
+                                description: data.description
+                            })
+                        );
+                        dispatch(setDestination(null));
+                        console.log(details.geometry.location);
+
+                        console.log(data.description);
+                        navigation.navigate('MapScreen');
+                    }}
+                    query={{
+                        key: GOOGLE_MAP_APIKEY,
+                        language: 'vn',
+                        components: 'country:vn'
                     }}
                 />
-            <GooglePlacesAutocomplete
-                styles={{
-                    container: { flex: 0 },
-                    textInput: { fontSize: 18 }
-                }}
-                minLength={2}
-                enablePoweredByContainer={false}
-                nearbyPlacesAPI="GooglePlacesSearch"
-                debounce={400}
-                placeholder="Where from?"
-                fetchDetails={true}
-                returnKeyType={'search'}
-                onPress={(data, details = null) => {
-                    dispatch(
-                        setOrigin({
-                            location: details.geometry.location,
-                            description: data.description
-                        })
-                    );
-                    dispatch(setDestination(null));
-                }}
-                query={{
-                    key: 'API KEY HERE PLS',
-                    language: 'vn',
-                    components: 'country:vn'
-                }}
-            />
-            <NavOptions />
-            <NavFavourites/>
+                <View className="flex-col p-1">
+                    <Text style={{ fontSize: 25, fontWeight: 'bold' }}>Favprite places </Text>
+                    <View
+                        style={{
+                            height: 5,
+                            marginHorizontal: 20,
+                            borderBottomWidth: 1,
+                            borderColor: '#dddddf'
+                        }}></View>
+                    <NavFavourites />
+                </View>
             </View>
-
+            <View style={{ flex: 0.2 }}>
+                <UserProfile />
+            </View>
         </SafeAreaView>
     );
 };

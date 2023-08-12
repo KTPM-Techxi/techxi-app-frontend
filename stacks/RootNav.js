@@ -9,37 +9,29 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-
 export default RootNav = () => {
-    const [initializing, setInitializing] = useState(false)
+    const [initializing, setInitializing] = useState(false);
     //check persistent login
-    const checkLogin = async() =>{
+    const checkLogin = async () => {
         //Check firebase || mongo
 
         // Update redux
 
-        
-        setInitializing(false)
-    }
+        setInitializing(false);
+    };
 
-    useEffect(()=>{
-        checkLogin()
-    },[])
-    
+    useEffect(() => {
+        checkLogin();
+    }, []);
 
-
-    if(initializing) return null;
+    if (initializing) return null;
 
     let userType = useSelector(selectType);
-    if(!userType) userType = null
-    const loggedin = userType != null;
-
-
-
-
+    if (!userType) userType = null;
+    const loggedin = userType !== null;
 
     if (loggedin) {
-        if (userType) {
+        if (userType === 'customer') {
             return <CustomerStack />;
         } else {
             return <DriverStack />;

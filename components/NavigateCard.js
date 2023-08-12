@@ -6,7 +6,7 @@ import { setDestination } from '../slices/navSlice';
 import { useNavigation } from '@react-navigation/native';
 import NavFavourites from './NavFavourites';
 import { Icon } from 'react-native-elements';
-import {GOOGLE_MAP_APIKEY} from '@env'
+import { GOOGLE_MAP_APIKEY } from '@env';
 const NavigateCard = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
@@ -59,12 +59,10 @@ const NavigateCard = () => {
                         }}
                     />
                 </View>
-                <View style={{height: 200}}>
-                <NavFavourites isOrigin={false}/>
-
+                <View style={{ height: 200 }}>
+                    <NavFavourites isOrigin={false} />
                 </View>
-                <View style={{flexDirection:'row',justifyContent: 'center', paddingBottom: 30}}
-                    >
+                <View style={{ flexDirection: 'row', justifyContent: 'center', paddingBottom: 30 }}>
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => {
@@ -106,9 +104,9 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         flexDirection: 'row',
         width: 150,
-        justifyContent:'space-around',
+        justifyContent: 'space-around',
         paddingVertical: 10,
-        paddingHorizontal:20
+        paddingHorizontal: 20
     },
     menu: {
         position: 'absolute',
