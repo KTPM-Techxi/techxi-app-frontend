@@ -5,11 +5,13 @@ import DriverHomeScreen from '../screens/DriverHomeScreen';
 
 const Stack = createNativeStackNavigator();
 
-export  default DriverStack = () => {
+export default DriverStack = () => {
     return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name='Home' component={DriverHomeScreen}/>
-
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen
+                name="Home"
+                component={DriverHomeScreen}
+            />
         </Stack.Navigator>
     );
-}
+};

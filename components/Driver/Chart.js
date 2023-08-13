@@ -39,12 +39,18 @@ const Item = () => {
 };
 const Chart = () => {
     return (
-        <FlatList
-            keyExtractor={(item) => item.id}
-            renderItem={Item}
-            data={data}
-            className="flex flex-row gap-1"
-        />
+        <>
+            <FlatList
+                keyExtractor={(item) => item.id}
+                renderItem={Item}
+                data={data}
+            />
+            <FlatList
+                keyExtractor={(item) => item.id}
+                renderItem={Item}
+                data={data}
+            />
+        </>
     );
 };
 
