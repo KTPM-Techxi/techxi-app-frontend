@@ -8,6 +8,8 @@ import NavFavourites from '../components/NavFavourites';
 import { useNavigation } from '@react-navigation/native';
 import UserProfile from '../components/UserProfile';
 import { GOOGLE_MAP_APIKEY } from '@env';
+import RecentDrivesHistory from '../components/Driver/RecentDrivesHistory';
+import Chart from '../components/Driver/Chart';
 
 const DriverHomeScreen = () => {
     const dispatch = useDispatch();
@@ -25,55 +27,12 @@ const DriverHomeScreen = () => {
                     />
                     <Text className="text-sm">Welcome back Minh</Text>
                 </View>
-                <GooglePlacesAutocomplete
-                    styles={{
-                        container: { flex: 0 },
-                        textInput: {
-                            fontSize: 18,
-                            backgroundColor: '#dddddf',
-                            borderRadius: 0
-                        }
-                    }}
-                    minLength={2}
-                    enablePoweredByContainer={false}
-                    nearbyPlacesAPI="GooglePlacesSearch"
-                    debounce={400}
-                    placeholder="Where from?"
-                    fetchDetails={true}
-                    returnKeyType={'search'}
-                    onPress={(data, details = null) => {
-                        dispatch(
-                            setOrigin({
-                                location: details.geometry.location,
-                                description: data.description
-                            })
-                        );
-                        dispatch(setDestination(null));
-                        console.log(details.geometry.location);
-
-                        console.log(data.description);
-                        navigation.navigate('MapScreen');
-                    }}
-                    query={{
-                        key: GOOGLE_MAP_APIKEY,
-                        language: 'vn',
-                        components: 'country:vn'
-                    }}
-                />
                 <View className="flex-col p-1">
-                    <Text style={{ fontSize: 25, fontWeight: 'bold' }}>Favprite places </Text>
-                    <View
-                        style={{
-                            height: 5,
-                            marginHorizontal: 20,
-                            borderBottomWidth: 1,
-                            borderColor: '#dddddf'
-                        }}></View>
-                    <NavFavourites />
+                    <Text style={{ fontSize: 25, fontWeight: 'bold' }}>Recent Drives</Text>
+                    <View className="h-1 px-20 border-b border-gray-300"></View>
+                    <RecentDrivesHistory />
+                    <Chart />
                 </View>
-            </View>
-            <View style={{ flex: 0.2 }}>
-                <UserProfile />
             </View>
         </SafeAreaView>
     );
