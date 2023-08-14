@@ -6,7 +6,9 @@ import RootNav from './stacks/RootNav';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { KeyboardAvoidingView, Platform, SafeAreaView } from 'react-native';
-import { PaperProvider } from 'react-native-paper';
+import { Drawer, PaperProvider } from 'react-native-paper';
+import { BottomTabs } from './components/BottomNavigation';
+import DriverEarningScreen from './screens/DriverScreens/DriverEarningScreen';
 export default function App() {
     return (
         <Provider store={store}>
@@ -18,7 +20,8 @@ export default function App() {
                             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                             keyboardVerticalOffset={Platform.OS === 'ios' ? -64 : 0}>
                             <StatusBar style="auto" />
-                            <RootNav />
+                            {/* <RootNav /> */}
+                            <BottomTabs />
                         </KeyboardAvoidingView>
                     </NavigationContainer>
                 </SafeAreaProvider>

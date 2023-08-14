@@ -66,7 +66,7 @@ const RegisterScreen = ({ navigation }) => {
             } catch (error) {
                 Alert.alert('Error', 'Something went wrong');
             }
-        }, 3000);
+        }, 500);
     };
 
     const handleOnchange = (text, input) => {
