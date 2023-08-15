@@ -6,10 +6,10 @@ import { selectType } from '../slices/authSlice';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import {BottomTabs} from '../components/BottomNavigation'
+import { BottomTabs } from '../components/BottomNavigation';
 
 export default RootNav = () => {
-    const [initializing, setInitializing] = useState(true);
+    const [initializing, setInitializing] = useState(false);
     //check persistent login
     const checkLogin = async () => {
         //Check firebase || mongo
