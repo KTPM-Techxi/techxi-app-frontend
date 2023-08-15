@@ -3,6 +3,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 
 import DriverHomeScreen from '../screens/DriverHomeScreen';
 import DriverEarningScreen from '../screens/DriverScreens/DriverEarningScreen';
+import HistoryScreen from '../screens/DriverScreens/HistoryScreen';
 const Tab = createMaterialBottomTabNavigator();
 
 export const BottomTabs = () => {
@@ -38,7 +39,7 @@ export const BottomTabs = () => {
             />
             <Tab.Screen
                 name="History"
-                component={DriverEarningScreen}
+                component={HistoryScreen}
                 options={{
                     tabBarIcon: 'history'
                 }}

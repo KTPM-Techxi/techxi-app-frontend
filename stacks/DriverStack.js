@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DriverHomeScreen from '../screens/DriverHomeScreen';
-
+import DriverEarningScreen from '../screens/DriverScreens/DriverEarningScreen';
 const Stack = createNativeStackNavigator();
 
 export default DriverStack = () => {
@@ -12,6 +12,10 @@ export default DriverStack = () => {
                 name="Home"
                 component={DriverHomeScreen}
             />
+            {/* <Stack.Screen
+                name="DriverEarningScreen"
+                component={DriverEarningScreen}
+            /> */}
         </Stack.Navigator>
     );
 };
