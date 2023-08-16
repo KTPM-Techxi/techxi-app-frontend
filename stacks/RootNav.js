@@ -6,7 +6,7 @@ import { selectType } from '../slices/authSlice';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { BottomTabs } from '../components/BottomNavigation';
+import DriverStack from './DriverStack';
 
 export default RootNav = () => {
     const [initializing, setInitializing] = useState(false);
@@ -33,7 +33,7 @@ export default RootNav = () => {
         if (userType === 'customer') {
             return <CustomerStack />;
         } else {
-            return <BottomTabs />;
+            return <DriverStack />;
         }
     } else {
         return <AuthStack />;

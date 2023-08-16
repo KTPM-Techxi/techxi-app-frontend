@@ -11,7 +11,7 @@ const DriverHomeScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const handleNavigate = () => {
-        navigation.navigate('MapScreen');
+        navigation.navigate('DriverMap');
     };
     return (
         <SafeAreaView className="bg-white flex-1">
@@ -116,7 +116,9 @@ const DriverHomeScreen = () => {
                                     icon="arrow-right"
                                     className="-ml-6 translate-x-4"
                                     labelStyle={{ fontSize: 25 }}
-                                    textColor="#1172FF"></Button>
+                                    textColor="#1172FF">
+
+                                    </Button>
                             </Pressable>
                         </View>
                         <View className="h-[1.5px] w-full bg-[#b3ccd3] rounded-full py-[.8px] my-6"></View>
