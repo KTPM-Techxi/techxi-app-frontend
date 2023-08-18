@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Icon } from 'react-native-elements';
 
-
 const DriverProcess = ({ navigation, param }) => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
@@ -17,18 +16,22 @@ const DriverProcess = ({ navigation, param }) => {
             <Text style={styles.greeting}>Price: {param?.price}</Text>
             <View style={styles.panel}>
                 <View style={{ flexDirection: 'row' }}>
+                    <View style={{ flexDirection: 'column' }}>
+                        <Text>o</Text>
+                        <Text>o</Text>
+                    </View>
+                    <View style={{ flexDirection: 'column' }}>
+                        <Text>From</Text>
+                        <Text>To</Text>
+                    </View>
+                    <View style={{ flexDirection: 'column' }}>
+                        <Text>Origin</Text>
+                        <Text>Destination</Text>
+                    </View>
+                </View>
+                <View style={{ flexDirection: 'row' }}>
                     <Text>Customer No</Text> <Text>Phone number</Text>
                 </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <Text>Name</Text> <Text>name</Text>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <Text>From</Text> <Text>origin</Text>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <Text>To</Text> <Text>destination</Text>
-                </View>
-
                 {inProgress ? (
                     <View
                         style={{
@@ -36,11 +39,10 @@ const DriverProcess = ({ navigation, param }) => {
                             justifyContent: 'center',
                             paddingBottom: 30
                         }}>
-                        
                         <TouchableOpacity
                             style={[styles.button, { backgroundColor: 'green' }]}
                             onPress={() => {
-                                navigation.navigate('DriverHome')
+                                navigation.navigate('DriverHome');
 
                                 setInProgress(false);
                             }}>
@@ -64,7 +66,6 @@ const DriverProcess = ({ navigation, param }) => {
                             style={[styles.button, { backgroundColor: 'red' }]}
                             onPress={() => {
                                 // send http
-
                             }}>
                             <Icon
                                 name="car"
@@ -77,7 +78,6 @@ const DriverProcess = ({ navigation, param }) => {
                         <TouchableOpacity
                             style={[styles.button, { backgroundColor: 'green' }]}
                             onPress={() => {
-
                                 // Send http
                                 setInProgress(true);
                             }}>
