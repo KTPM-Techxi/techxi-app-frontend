@@ -8,7 +8,7 @@ import { Icon } from 'react-native-elements';
 
 const DriverProcess = ({ navigation, param }) => {
     const dispatch = useDispatch();
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
     const [inProgress, setInProgress] = useState(false);
 
     return (
