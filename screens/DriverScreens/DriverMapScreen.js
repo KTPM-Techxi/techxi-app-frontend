@@ -1,12 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import Map from '../components/Map';
+import Map from '../../components/Map';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import NavigateCard from '../components/NavigateCard';
-import RideOptionsCard from '../components/RideOptionsCard';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-import UserProgress from '../components/UserProgress';
+import DriverProcess from '../../components/DriverProcess';
 
 const DriverMapScreen = () => {
     const mStack = createNativeStackNavigator();
@@ -22,7 +20,8 @@ const DriverMapScreen = () => {
                 <Map />
             </View>
             <View style={{ flex: 0.5 }}>
-                <Text style={{fontSize: 30}}>This is driver map</Text>
+                
+                <DriverProcess/>
                 {/* <mStack.Navigator screenOptions={{ headerShown: false }}>
                     <mStack.Screen
                         name="NavigateCard"
