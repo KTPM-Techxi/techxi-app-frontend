@@ -15,22 +15,22 @@ const DriverProcess = ({ navigation, param }) => {
         <SafeAreaView style={styles.bg}>
             <Text style={styles.greeting}>Price: {param?.price}</Text>
             <View style={styles.panel}>
-                <View style={{ flexDirection: 'row' }}>
-                    <View style={{ flexDirection: 'column' }}>
-                        <Text>o</Text>
-                        <Text>o</Text>
+                <View style={{ flexDirection: 'row', marginLeft: 30, paddingTop: 10 }}>
+                    <View style={{ flexDirection: 'column', gap: 5 }}>
+                        <Text style={{ color: 'blue', fontWeight: 'bold' }}>o</Text>
+                        <Text style={{ color: 'blue', fontWeight: 'bold' }}>o</Text>
+                        <Text style={{ color: 'blue', fontWeight: 'bold' }}>o</Text>
                     </View>
-                    <View style={{ flexDirection: 'column' }}>
-                        <Text>From</Text>
-                        <Text>To</Text>
+                    <View style={{ flexDirection: 'column', marginLeft: 5, gap: 5 }}>
+                        <Text style={{ color: 'blue', fontWeight: 'bold' }}>From</Text>
+                        <Text style={{ color: 'blue', fontWeight: 'bold' }}>To</Text>
+                        <Text style={{ color: 'blue', fontWeight: 'bold' }}>Customer</Text>
                     </View>
-                    <View style={{ flexDirection: 'column' }}>
+                    <View style={{ flexDirection: 'column', marginLeft: 10, gap: 5 }}>
                         <Text>Origin</Text>
                         <Text>Destination</Text>
+                        <Text>00000</Text>
                     </View>
-                </View>
-                <View style={{ flexDirection: 'row' }}>
-                    <Text>Customer No</Text> <Text>Phone number</Text>
                 </View>
                 {inProgress ? (
                     <View
