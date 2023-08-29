@@ -15,6 +15,7 @@ const HomeScreen = () => {
     const navigation = useNavigation();
 
     const locationSelect = (item) => {
+        console.log(item.geometry)
         dispatch(
             setOrigin({
                 location: item.geometry.location,

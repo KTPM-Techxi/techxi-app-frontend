@@ -38,8 +38,9 @@ const SearchLocationInput = ({ textInputText = '', onLocationSelect }) => {
                         place_id: item.place_id
                     })
             );
-            let result = await response.json();
-            selectedItemRes(result ? result : null);
+            let res = await response.json();
+            const result = res.result
+            console.log(result)
             setinputText(result?.name);
             setresultList([]);
             if (!result) return;
