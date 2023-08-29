@@ -77,17 +77,26 @@ const DriverRegisterScreen = ({ navigation }) => {
         setLoading(false);
         dispatch(setType('driver'));
 
-        // try {
+      // try {
         //     const response = await axios.post('/users/register', data);
         //     console.log(response);
+        //     if (response.status === 200) {
+        //         console.log(response.data);
 
-        //     //Sent fcm token
-
-        //     setLoading(false);
-        //     dispatch(setUsername(inputs.fullname))
-        //     dispatch(setPhoneNumber(inputs.phone))
-        //     dispatch(setID(response.id))
-        //     dispatch(setType('driver'));
+        //         //sent fcm
+        //         try {
+        //             const res = await axios.post('/users/fcm', {
+        //                 user_id: response.data.user_id,
+        //                 fcmToken: fcm
+        //             });
+        //             if (response.status === 200) {
+        //                 setLoading(false)
+        //                 dispatch(setUsername(inputs.email))
+        //                 dispatch(setType('driver'));
+        //                 dispatch(setID(response.data.user_id))
+        //             }
+        //         } catch (err) {}
+        //     }
         // } catch (error) {
         //     if (error.response && error.response.data && error.response.data.message) {
         //         console.log(error.response.data.message);
