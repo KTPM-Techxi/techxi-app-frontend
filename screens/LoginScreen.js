@@ -73,6 +73,7 @@ const LoginScreen = ({ navigation }) => {
                 dispatch(setUsername(inputs.email))
                 dispatch(setFCM('FCM Token'));
                 dispatch(setType(type));
+                dispatch(setID(response.id))
 
                 return response.data;
             }

@@ -72,7 +72,7 @@ const DriverRegisterScreen = ({ navigation }) => {
             phoneNumber: inputs.phone,
             address: '',
             dob: '15-05-2002',
-            role: 'customer'
+            role: 'driver'
         };
 
         try {
@@ -82,7 +82,11 @@ const DriverRegisterScreen = ({ navigation }) => {
             //Sent fcm token
 
             setLoading(false);
-            dispatch(setType('customer'));
+            dispatch(setFCM("FCM Token"))
+            dispatch(setUsername(inputs.fullname))
+            dispatch(setPhoneNumber(inputs.phone))
+            dispatch(setID(response.id))
+            dispatch(setType('driver'));
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
                 console.log(error.response.data.message);

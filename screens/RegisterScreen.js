@@ -5,7 +5,7 @@ import Loader from '../components/Loader';
 import InputField from '../components/InputField';
 import CustomButton from '../components/CustomButton';
 import { useDispatch } from 'react-redux';
-import { setFCM, setPhoneNumber, setType, setUsername } from '../slices/authSlice';
+import { setFCM, setID, setPhoneNumber, setType, setUsername } from '../slices/authSlice';
 
 const RegisterScreen = ({ navigation }) => {
     const [inputs, setInputs] = React.useState({
@@ -86,6 +86,7 @@ const RegisterScreen = ({ navigation }) => {
             dispatch(setPhoneNumber(inputs.phone))
             dispatch(setFCM("FCM Token"))
             dispatch(setType('customer'));
+            dispatch(setID(response.id))
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
                 console.log(error.response.data.message);
