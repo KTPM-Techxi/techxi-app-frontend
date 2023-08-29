@@ -5,14 +5,15 @@ import Loader from '../components/Loader';
 import InputField from '../components/InputField';
 import CustomButton from '../components/CustomButton';
 import { useDispatch } from 'react-redux';
-import { setType } from '../slices/authSlice';
+import { setFCM, setPhoneNumber, setType, setUsername } from '../slices/authSlice';
 
 const RegisterScreen = ({ navigation }) => {
     const [inputs, setInputs] = React.useState({
         email: '',
         fullname: '',
         phone: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     });
     const [errors, setErrors] = React.useState({});
     const [loading, setLoading] = React.useState(false);
@@ -48,25 +49,50 @@ const RegisterScreen = ({ navigation }) => {
             isValid = false;
         }
 
+        if (!inputs.confirmPassword) {
+            handleError('Please input confirm password', 'confirmPassword');
+            isValid = false;
+        } else if (inputs.confirmPassword != inputs.password) {
+            handleError('Confirm password must match password', 'confirmPassword');
+            isValid = false;
+        }
+
         if (isValid) {
             register();
         }
     };
 
-    const register = () => {
+    const register = async () => {
         setLoading(true);
-        setTimeout(() => {
-            try {
-                setLoading(false);
+        const data = {
+            name: inputs.fullname,
+            email: inputs.email,
+            password: inputs.password,
+            confirmPassword: inputs.confirmPassword,
+            phoneNumber: inputs.phone,
+            address: '',
+            dob: '15-05-2002',
+            role: 'customer'
+        };
 
-                //Register
+        try {
+            const response = await axios.post('/users/register', data);
+            console.log(response);
 
-                //update redux
-                dispatch(setType(true));
-            } catch (error) {
-                Alert.alert('Error', 'Something went wrong');
+            //Sent fcm token
+
+            setLoading(false);
+            dispatch(setUsername(inputs.fullname))
+            dispatch(setPhoneNumber(inputs.phone))
+            dispatch(setFCM("FCM Token"))
+            dispatch(setType('customer'));
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                console.log(error.response.data.message);
+            } else {
+                console.log('Register failed');
             }
-        }, 500);
+        }
     };
 
     const handleOnchange = (text, input) => {
@@ -128,7 +154,16 @@ const RegisterScreen = ({ navigation }) => {
                         label="Password"
                         placeholder="Enter your password"
                         error={errors.password}
-                        password
+                        password={true}
+                    />
+                    <InputField
+                        onChangeText={(text) => handleOnchange(text, 'confirmPassword')}
+                        onFocus={() => handleError(null, 'confirmPassword')}
+                        iconName="lock-outline"
+                        label="Confirm Password"
+                        placeholder="Enter your password"
+                        error={errors.confirmPassword}
+                        password={true}
                     />
                     <CustomButton
                         title="Register"

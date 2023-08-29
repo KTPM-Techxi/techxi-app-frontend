@@ -7,9 +7,18 @@ import { useNavigation } from '@react-navigation/native';
 import NavFavourites from './NavFavourites';
 import { Icon } from 'react-native-elements';
 import { GOOGLE_MAP_APIKEY } from '@env';
+import SearchLocationInput from './SearchLocationInput';
 const NavigateCard = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
+    const selectLocation =(item)=>{
+        dispatch(
+            setDestination({
+                location: item.geometry.location,
+                description: item.name
+            })
+        );
+    }
 
     return (
         <SafeAreaView style={styles.bg}>
@@ -24,40 +33,8 @@ const NavigateCard = () => {
             <Text style={styles.greeting}>Hello, User</Text>
             <View style={styles.panel}>
                 <View>
-                    <GooglePlacesAutocomplete
-                        styles={{
-                            container: { flex: 0, backgroundColor: 'white', paddingTop: 20 },
-                            textInput: {
-                                fontSize: 18,
-                                backgroundColor: '#dddddf',
-                                borderRadius: 0
-                            },
-                            textInputContainer: {
-                                paddingHorizontal: 20,
-                                paddingBottom: 0
-                            }
-                        }}
-                        minLength={2}
-                        fetchDetails={true}
-                        returnKeyType={'search'}
-                        enablePoweredByContainer={false}
-                        nearbyPlacesAPI="GooglePlacesSearch"
-                        debounce={400}
-                        placeholder="Where to?"
-                        onPress={(data, details = null) => {
-                            dispatch(
-                                setDestination({
-                                    location: details.geometry.location,
-                                    description: data.description
-                                })
-                            );
-                        }}
-                        query={{
-                            key: GOOGLE_MAP_APIKEY,
-                            language: 'vn',
-                            components: 'country:vn'
-                        }}
-                    />
+                    <SearchLocationInput onLocationSelect={res => selectLocation(res)} />
+                    
                 </View>
                 <View style={{ height: 200 }}>
                     <NavFavourites isOrigin={false} />
@@ -124,6 +101,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.27,
         shadowRadius: 4.65,
 
-        elevation: 6
+        elevation: 6 
     }
 });

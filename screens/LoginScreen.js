@@ -13,7 +13,7 @@ import InputField from '../components/InputField';
 import CustomButton from '../components/CustomButton';
 import { Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
-import { setType } from '../slices/authSlice';
+import { setType, setUsername } from '../slices/authSlice';
 
 const LoginScreen = ({ navigation }) => {
     const [inputs, setInputs] = React.useState({ email: '', password: '' });
@@ -54,17 +54,40 @@ const LoginScreen = ({ navigation }) => {
         }
     };
 
-    const login = () => {
+    const login = async () => {
         setLoading(true);
-        setTimeout(async () => {
-            setLoading(false);
+        const data = {
+            email: inputs.email,
+            password: inputs.password
+        };
+        try {
+            const response = await axios.post('/users/login', data);
+            console.log(response);
+            if (response.status === 200) {
+                console.log(response.data);
 
-            //Login user
-            //Get user type
 
-            //set user data redux
-            dispatch(setType(type));
-        }, 1000);
+                //sent fcm
+
+                setLoading(false)
+                dispatch(setUsername(inputs.email))
+                dispatch(setFCM('FCM Token'));
+                dispatch(setType(type));
+
+                return response.data;
+            }
+
+            console.log(response);
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                console.log(error.response.data.message);
+            } else {
+                console.log('Login failed');
+            }
+        }
+
+
+
     };
 
     const handleOnchange = (text, input) => {
@@ -119,7 +142,7 @@ const LoginScreen = ({ navigation }) => {
                                 label="Password"
                                 placeholder="Enter your password"
                                 error={errors.password}
-                                password
+                                password={true}
                             />
                             <CustomButton
                                 title="Log In"

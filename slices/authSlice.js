@@ -5,7 +5,7 @@ const userState = {
     phoneNumber: null,
     vehicle: null,
     type: null,
-    fireToken: null
+    fcmToken: null
 };
 
 export const authSlice = createSlice({
@@ -23,16 +23,20 @@ export const authSlice = createSlice({
         },
         setType: (state, action)=>{
             state.type = action.payload;
+        },
+        setFCM:(state, action)=>{
+            state.fcmToken = action.payload
         }
     }
 });
 
-export const { setUsername, setPhoneNumber, setVehicleNumber, setType } = authSlice.actions;
+export const { setUsername, setPhoneNumber, setVehicleNumber, setType, setFCM } = authSlice.actions;
 
 export const selectName = (state) => state.auth.name;
 export const selecPhoneNumber = (state) => state.auth.phoneNumber;
 export const selectVehicle = (state) => state.auth.vehicle;
 export const selectType = (state) => state.auth.type;
+export const selectFCM = (state) => state.auth.fcmToken
 export const selectAll = (state) => state.auth;
 
 export default authSlice.reducer;

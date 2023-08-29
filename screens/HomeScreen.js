@@ -8,10 +8,22 @@ import NavFavourites from '../components/NavFavourites';
 import { useNavigation } from '@react-navigation/native';
 import UserProfile from '../components/UserProfile';
 import { GOOGLE_MAP_APIKEY } from '@env';
+import SearchLocationInput from '../components/SearchLocationInput';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
+
+    const locationSelect = (item) => {
+        dispatch(
+            setOrigin({
+                location: item.geometry.location,
+                description: item.name
+            })
+        );
+        dispatch(setDestination(null));
+        navigation.navigate('MapScreen');
+    };
 
     return (
         <SafeAreaView style={styles.bg}>
@@ -22,41 +34,8 @@ const HomeScreen = () => {
                         uri: 'https://links.papareact.com/gzs'
                     }}
                 />
-                <GooglePlacesAutocomplete
-                    styles={{
-                        container: { flex: 0 },
-                        textInput: {
-                            fontSize: 18,
-                            backgroundColor: '#dddddf',
-                            borderRadius: 0
-                        }
-                    }}
-                    minLength={2}
-                    enablePoweredByContainer={false}
-                    nearbyPlacesAPI="GooglePlacesSearch"
-                    debounce={400}
-                    placeholder="Where from?"
-                    fetchDetails={true}
-                    returnKeyType={'search'}
-                    onPress={(data, details = null) => {
-                        dispatch(
-                            setOrigin({
-                                location: details.geometry.location,
-                                description: data.description
-                            })
-                        );
-                        dispatch(setDestination(null));
-                        console.log(details.geometry.location);
+                <SearchLocationInput onLocationSelect={(res) => locationSelect(res)} />
 
-                        console.log(data.description);
-                        navigation.navigate('MapScreen');
-                    }}
-                    query={{
-                        key: GOOGLE_MAP_APIKEY,
-                        language: 'vn',
-                        components: 'country:vn'
-                    }}
-                />
                 <View style={{ flexDirection: 'column', paddingTop: 20 }}>
                     <Text style={{ fontSize: 25, fontWeight: 'bold' }}>Favprite places </Text>
                     <View

@@ -26,9 +26,12 @@ const Map = () => {
 
     useEffect(() => {
         if (!origin || !destination) return;
+
         const getTravelTime = async () => {
             //Insert API KEY HERE
-            const URL = `https://maps.googleapis.com/maps/api/distancematrix/json?destinations=${destination.description}&origins=${origin.description}&key=${GOOGLE_MAP_APIKEY}`;
+            const YOUR_API_KEY = 'NdHC0NcH8Om0kgYqIwrmdALpmlANLlST3CLWW45M'
+            const URL = `https://rsapi.goong.io/DistanceMatrix?origins=${origin.location.lat + ',' + origin.location.lng}&destinations=${destination.location.lat + ',' + destination.location.lng}&vehicle=car&api_key=${YOUR_API_KEY}`;
+
             fetch(URL)
                 .then((res) => res.json())
                 .then((data) => {
@@ -36,6 +39,16 @@ const Map = () => {
                     setLoad((prev) => !prev);
                 });
         };
+        // const getTravelTime = async () => {
+        //     //Insert API KEY HERE
+        //     const URL = `https://maps.googleapis.com/maps/api/distancematrix/json?destinations=${destination.description}&origins=${origin.description}&key=${GOOGLE_MAP_APIKEY}`;
+        //     fetch(URL)
+        //         .then((res) => res.json())
+        //         .then((data) => {
+        //             // dispatch(setTravelTimeInformation(data?.rows[0]?.elements[0]));
+        //             setLoad((prev) => !prev);
+        //         });
+        // };
         getTravelTime();
     }, [origin, destination]);
 
