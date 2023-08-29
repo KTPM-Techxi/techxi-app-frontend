@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import messaging from '@react-native-firebase/messaging'
-
+import messaging from '@react-native-firebase/messaging';
+import { setDestination, setOrigin, setTravelTimeInformation } from '../slices/navSlice';
 
 const DriverHomeScreen = () => {
     const dispatch = useDispatch();
@@ -16,6 +16,38 @@ const DriverHomeScreen = () => {
     useEffect(() => {
         const unsubscribe = messaging().onMessage(async (remoteMessage) => {
             console.log(remoteMessage);
+            // const data = remoteMessage.data;
+
+            // dispatch(
+            //     setOrigin({
+            //         location: {
+            //             lat: data.pickup_location.latitude,
+            //             lng: data.pickup_location.longitude
+            //         },
+            //         description: data.pickup_location.description
+            //     })
+            // );
+
+            // dispatch(
+            //     setDestination({
+            //         location: {
+            //             lat: data.destination.latitude,
+            //             lng: data.destination.longitude
+            //         },
+            //         description: data.destination.description
+            //     })
+            // );
+
+            // dispatch(
+            //     setTravelTimeInformation({
+            //         price: { text: '0', value: data.total_price },
+            //         distance: { text: '0', value: data.total_distance },
+            //         phoneNumber: data.phoneNumber,
+            //          
+            //     })
+            // );
+
+            navigation.navigate('DriverMap');
         });
 
         return unsubscribe;
@@ -123,9 +155,7 @@ const DriverHomeScreen = () => {
                                     icon="arrow-right"
                                     className="-ml-6 translate-x-4"
                                     labelStyle={{ fontSize: 25 }}
-                                    textColor="#1172FF">
-
-                                    </Button>
+                                    textColor="#1172FF"></Button>
                             </Pressable>
                         </View>
                         <View className="h-[1.5px] w-full bg-[#b3ccd3] rounded-full py-[.8px] my-6"></View>
