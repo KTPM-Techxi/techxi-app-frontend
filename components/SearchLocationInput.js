@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Image, Text, FlatList, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 
 const SearchLocationInput = ({ textInputText = '', onLocationSelect }) => {
     const [resultList, setresultList] = useState([]);
@@ -63,18 +63,14 @@ const SearchLocationInput = ({ textInputText = '', onLocationSelect }) => {
     };
 
     return (
-        <View
-            style={{
-                flex: 1,
-                width: '98%',
-                position: 'absolute',
-                top: 30,
-                zIndex: 1,
-                backgroundColor: 'white'
-            }}>
+        <View className='flex-row p-2 bg-white rounded-lg border-gray-400'>
+            <Image
+                    source={{ uri: 'https://cdn-icons-png.flaticon.com/512/954/954591.png' }}
+                    className = 'w-6 h-6 mx-2'
+                />
             <TextInput
-                style={{ height: 60, borderColor: '#000', borderWidth: 1 }}
-                placeholder="Location..."
+                className = '' 
+                placeholder="Search for locations"
                 onChangeText={searchItems}
                 value={inputText}
             />

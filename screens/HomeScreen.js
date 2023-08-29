@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, View, StyleSheet, Image } from 'react-native';
+import { SafeAreaView, Text, View, StyleSheet, Image, Button} from 'react-native';
 import NavOptions from '../components/NavOptions';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useDispatch } from 'react-redux';
@@ -9,6 +9,8 @@ import { useNavigation } from '@react-navigation/native';
 import UserProfile from '../components/UserProfile';
 import { GOOGLE_MAP_APIKEY } from '@env';
 import SearchLocationInput from '../components/SearchLocationInput';
+import { Icon } from 'react-native-elements';
+import { Card } from '@rneui/themed';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
@@ -27,45 +29,34 @@ const HomeScreen = () => {
     };
 
     return (
-        <SafeAreaView style={styles.bg}>
-            <View style={{ padding: 5, flex: 0.8 }}>
-                <Image
-                    style={styles.logo}
-                    source={{
-                        uri: 'https://links.papareact.com/gzs'
-                    }}
-                />
+        <SafeAreaView className='bg-green-500'>
+            <View className='w-5/6 pt-6 mx-auto flex-row'>
+                    <Image 
+                    className='rounded-full h-10 w-10 border-white'
+                    source={{uri: 'https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj'}}/>
+            </View>
+            <View className='w-5/6 mt-4 mx-auto flex-auto shadow-2xl'>
                 <SearchLocationInput onLocationSelect={(res) => locationSelect(res)} />
-
-                <View style={{ flexDirection: 'column', paddingTop: 20 }}>
-                    <Text style={{ fontSize: 25, fontWeight: 'bold' }}>Favprite places </Text>
-                    <View
-                        style={{
-                            height: 5,
-                            marginHorizontal: 20,
-                            borderBottomWidth: 1,
-                            borderColor: '#dddddf'
-                        }}></View>
-                    <NavFavourites />
+            </View>
+            <View className='h-4/5 bg-white rounded-3xl shadow'>
+                <View className='grid grid-cols-2'>
+                    <Card className='mx-4 border-green-500'>
+                        <Text>sadsda</Text>
+                    </Card>
+                    <Card className='mx-4 border-green-500'>
+                        <Text>sadasd</Text>
+                    </Card>
+                    <Card className='mx-4 border-green-500'>
+                        <Text>sadasd</Text>
+                    </Card>
+                    <Card className='mx-4 border-green-500'>
+                        <Text>sadasd</Text>
+                    </Card>
                 </View>
             </View>
-            <View style={{ flex: 0.2 }}>
-                <UserProfile />
-            </View>
         </SafeAreaView>
+        
     );
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({
-    bg: {
-        backgroundColor: '#ffffff',
-        flex: 1
-    },
-    logo: {
-        width: 100,
-        height: 100,
-        resizeMode: 'contain'
-    }
-});
