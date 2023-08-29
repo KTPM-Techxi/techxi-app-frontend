@@ -74,26 +74,28 @@ const RegisterScreen = ({ navigation }) => {
             dob: '15-05-2002',
             role: 'customer'
         };
+        setLoading(false);
+                    dispatch(setType('customer'));
 
-        try {
-            const response = await axios.post('/users/register', data);
-            console.log(response);
+        // try {
+        //     const response = await axios.post('/users/register', data);
+        //     console.log(response);
 
-            //Sent fcm token
+        //     //Sent fcm token
 
-            setLoading(false);
-            dispatch(setUsername(inputs.fullname))
-            dispatch(setPhoneNumber(inputs.phone))
-            dispatch(setFCM("FCM Token"))
-            dispatch(setType('customer'));
-            dispatch(setID(response.id))
-        } catch (error) {
-            if (error.response && error.response.data && error.response.data.message) {
-                console.log(error.response.data.message);
-            } else {
-                console.log('Register failed');
-            }
-        }
+        //     setLoading(false);
+        //     dispatch(setUsername(inputs.fullname))
+        //     dispatch(setPhoneNumber(inputs.phone))
+        //     dispatch(setFCM("FCM Token"))
+        //     dispatch(setType('customer'));
+        //     dispatch(setID(response.id))
+        // } catch (error) {
+        //     if (error.response && error.response.data && error.response.data.message) {
+        //         console.log(error.response.data.message);
+        //     } else {
+        //         console.log('Register failed');
+        //     }
+        // }
     };
 
     const handleOnchange = (text, input) => {

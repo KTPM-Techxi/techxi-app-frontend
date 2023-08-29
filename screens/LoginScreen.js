@@ -60,32 +60,34 @@ const LoginScreen = ({ navigation }) => {
             email: inputs.email,
             password: inputs.password
         };
-        try {
-            const response = await axios.post('/users/login', data);
-            console.log(response);
-            if (response.status === 200) {
-                console.log(response.data);
+        setLoading(false)
+        dispatch(setType(type));
+        // try {
+        //     const response = await axios.post('/users/login', data);
+        //     console.log(response);
+        //     if (response.status === 200) {
+        //         console.log(response.data);
 
 
-                //sent fcm
+        //         //sent fcm
 
-                setLoading(false)
-                dispatch(setUsername(inputs.email))
-                dispatch(setFCM('FCM Token'));
-                dispatch(setType(type));
-                dispatch(setID(response.id))
+        //         setLoading(false)
+        //         dispatch(setUsername(inputs.email))
+        //         dispatch(setFCM('FCM Token'));
+        //         dispatch(setType(type));
+        //         dispatch(setID(response.id))
 
-                return response.data;
-            }
+        //         return response.data;
+        //     }
 
-            console.log(response);
-        } catch (error) {
-            if (error.response && error.response.data && error.response.data.message) {
-                console.log(error.response.data.message);
-            } else {
-                console.log('Login failed');
-            }
-        }
+        //     console.log(response);
+        // } catch (error) {
+        //     if (error.response && error.response.data && error.response.data.message) {
+        //         console.log(error.response.data.message);
+        //     } else {
+        //         console.log('Login failed');
+        //     }
+        // }
 
 
 

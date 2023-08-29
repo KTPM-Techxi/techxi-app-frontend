@@ -74,26 +74,28 @@ const DriverRegisterScreen = ({ navigation }) => {
             dob: '15-05-2002',
             role: 'driver'
         };
+        setLoading(false);
+        dispatch(setType('driver'));
 
-        try {
-            const response = await axios.post('/users/register', data);
-            console.log(response);
+        // try {
+        //     const response = await axios.post('/users/register', data);
+        //     console.log(response);
 
-            //Sent fcm token
+        //     //Sent fcm token
 
-            setLoading(false);
-            dispatch(setFCM("FCM Token"))
-            dispatch(setUsername(inputs.fullname))
-            dispatch(setPhoneNumber(inputs.phone))
-            dispatch(setID(response.id))
-            dispatch(setType('driver'));
-        } catch (error) {
-            if (error.response && error.response.data && error.response.data.message) {
-                console.log(error.response.data.message);
-            } else {
-                console.log('Register failed');
-            }
-        }
+        //     setLoading(false);
+        //     dispatch(setFCM("FCM Token"))
+        //     dispatch(setUsername(inputs.fullname))
+        //     dispatch(setPhoneNumber(inputs.phone))
+        //     dispatch(setID(response.id))
+        //     dispatch(setType('driver'));
+        // } catch (error) {
+        //     if (error.response && error.response.data && error.response.data.message) {
+        //         console.log(error.response.data.message);
+        //     } else {
+        //         console.log('Register failed');
+        //     }
+        // }
     };
 
     const handleOnchange = (text, input) => {
