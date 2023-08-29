@@ -7,6 +7,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import messaging from '@react-native-firebase/messaging';
 import { setDestination, setOrigin, setTravelTimeInformation } from '../slices/navSlice';
 
+// Maually send data:
+//  - Go to testfcm.com
+//  - Server key: AAAAj8UgZvw:APA91bEIhgBxNp93a1SZyl50mtaWrL6v06OlAL4k1DyujFyScczJjLHh9NaqOGMW62XwSdBPIrba1Qit6OPKspVtK5TzN956u3TWyFnBO-JVCVMHCtuXgZniTud9xYQ4RTrZO1Bb3AGq
+//  - FCM Token: In the console log
+//  - Input data into data field (format as {"price":"500000"})
+
 const DriverHomeScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();

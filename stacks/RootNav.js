@@ -30,7 +30,7 @@ export default RootNav = () => {
                 .getToken()
                 .then((token) => {
                     dispatch(setFCM(token))
-                    console.log(token);
+                    console.log("FCM Token", token);
                 });
         }
     }, []);
