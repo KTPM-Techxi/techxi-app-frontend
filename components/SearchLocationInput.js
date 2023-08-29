@@ -5,7 +5,6 @@ const SearchLocationInput = ({ textInputText = '', onLocationSelect }) => {
     const [resultList, setresultList] = useState([]);
     const [inputText, setinputText] = useState(textInputText);
     const YOUR_API_KEY = 'NdHC0NcH8Om0kgYqIwrmdALpmlANLlST3CLWW45M';
-    const dispatch = useDispatch();
 
     const searchItems = async (text) => {
         try {
