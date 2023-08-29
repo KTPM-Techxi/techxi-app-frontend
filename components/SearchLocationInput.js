@@ -65,11 +65,12 @@ const SearchLocationInput = ({ textInputText = '', onLocationSelect }) => {
         <View
             style={{
                 flex: 1,
-                width: '98%',
+                width: '100%',
                 position: 'absolute',
                 top: 30,
                 zIndex: 1,
-                backgroundColor: 'white'
+                backgroundColor: 'white',
+                paddingHorizontal:10
             }}>
             <TextInput
                 style={{ height: 60, borderColor: '#000', borderWidth: 1 }}

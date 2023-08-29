@@ -4,7 +4,6 @@ import {
     Text,
     SafeAreaView,
     Keyboard,
-    Alert,
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
@@ -14,6 +13,7 @@ import CustomButton from '../components/CustomButton';
 import { Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { setType, setUsername } from '../slices/authSlice';
+import messaging from '@react-native-firebase/messaging'
 
 const LoginScreen = ({ navigation }) => {
     const [inputs, setInputs] = React.useState({ email: '', password: '' });
@@ -73,7 +73,6 @@ const LoginScreen = ({ navigation }) => {
 
         //         setLoading(false)
         //         dispatch(setUsername(inputs.email))
-        //         dispatch(setFCM('FCM Token'));
         //         dispatch(setType(type));
         //         dispatch(setID(response.id))
 

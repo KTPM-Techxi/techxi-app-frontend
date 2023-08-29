@@ -86,7 +86,6 @@ const RegisterScreen = ({ navigation }) => {
         //     setLoading(false);
         //     dispatch(setUsername(inputs.fullname))
         //     dispatch(setPhoneNumber(inputs.phone))
-        //     dispatch(setFCM("FCM Token"))
         //     dispatch(setType('customer'));
         //     dispatch(setID(response.id))
         // } catch (error) {

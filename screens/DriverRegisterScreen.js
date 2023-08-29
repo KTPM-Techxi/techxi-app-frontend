@@ -84,7 +84,6 @@ const DriverRegisterScreen = ({ navigation }) => {
         //     //Sent fcm token
 
         //     setLoading(false);
-        //     dispatch(setFCM("FCM Token"))
         //     dispatch(setUsername(inputs.fullname))
         //     dispatch(setPhoneNumber(inputs.phone))
         //     dispatch(setID(response.id))

@@ -1,18 +1,25 @@
 import React from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Image, Pressable, ScrollView } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { GOOGLE_MAP_APIKEY } from '@env';
+import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { BottomTabs } from '../components/BottomNavigation';
-import DriverStack from '../stacks/DriverStack';
+import messaging from '@react-native-firebase/messaging'
+
+
 const DriverHomeScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const handleNavigate = () => {
         navigation.navigate('DriverMap');
     };
+    useEffect(() => {
+        const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+            console.log(remoteMessage);
+        });
+
+        return unsubscribe;
+    }, []);
     return (
         <SafeAreaView className="bg-white flex-1">
             <ScrollView>
