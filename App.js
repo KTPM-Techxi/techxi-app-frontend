@@ -6,9 +6,12 @@ import RootNav from './stacks/RootNav';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { KeyboardAvoidingView, Platform } from 'react-native';
-import {  PaperProvider } from 'react-native-paper';
+import { PaperProvider } from 'react-native-paper';
+import { useEffect } from 'react';
+
 
 export default function App() {
+   
     return (
         <Provider store={store}>
             <PaperProvider>

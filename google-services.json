@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "617487558396",
+    "project_id": "techxi-4389d",
+    "storage_bucket": "techxi-4389d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617487558396:android:630e1e41dc980cf5cc9979",
+        "android_client_info": {
+          "package_name": "com.techxi.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617487558396-6334tucud92pko6nokq01d3ubs175mcl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techxi.app",
+            "certificate_hash": "36833a1191bc09dd85cd6e944f8ee680c0aeea3e"
+          }
+        },
+        {
+          "client_id": "617487558396-ksft5m6ud6jdab89s7do63uhffl22da8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techxi.app",
+            "certificate_hash": "785a0f75bb68a8cb9634fc29556a34f2a5426cc6"
+          }
+        },
+        {
+          "client_id": "617487558396-u5ctdhmpn8l4pplgldic7b2bf83c75p4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbGwqgYcP3riptcTQigci0UruAQtCCgt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617487558396-u5ctdhmpn8l4pplgldic7b2bf83c75p4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

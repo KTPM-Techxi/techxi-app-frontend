@@ -80,15 +80,23 @@ const RegisterScreen = ({ navigation }) => {
         // try {
         //     const response = await axios.post('/users/register', data);
         //     console.log(response);
+        //     if (response.status === 200) {
+        //         console.log(response.data);
 
-        //     //Sent fcm token
-
-        //     setLoading(false);
-        //     dispatch(setUsername(inputs.fullname))
-        //     dispatch(setPhoneNumber(inputs.phone))
-        //     dispatch(setFCM("FCM Token"))
-        //     dispatch(setType('customer'));
-        //     dispatch(setID(response.id))
+        //         //sent fcm
+        //         try {
+        //             const res = await axios.post('/users/fcm', {
+        //                 user_id: response.data.user_id,
+        //                 fcmToken: fcm
+        //             });
+        //             if (response.status === 200) {
+        //                 setLoading(false)
+        //                 dispatch(setUsername(inputs.email))
+        //                 dispatch(setType(type));
+        //                 dispatch(setID(response.data.user_id))
+        //             }
+        //         } catch (err) {}
+        //     }
         // } catch (error) {
         //     if (error.response && error.response.data && error.response.data.message) {
         //         console.log(error.response.data.message);

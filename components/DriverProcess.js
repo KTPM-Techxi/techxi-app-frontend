@@ -1,19 +1,30 @@
 import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useNavigation } from '@react-navigation/native';
 
 import { Icon } from 'react-native-elements';
+import { selectDestination, selectOrigin, selectTravelTimeInformation } from '../slices/navSlice';
 
-const DriverProcess = ({ navigation, param }) => {
+const DriverProcess = () => {
     const dispatch = useDispatch();
-    // const navigation = useNavigation();
+    const navigation = useNavigation();
     const [inProgress, setInProgress] = useState(false);
-
+    const travelTimeInformation = useSelector(selectTravelTimeInformation);
+    const origin = useSelector(selectOrigin);
+    const destination = useSelector(selectDestination);
     return (
         <SafeAreaView style={styles.bg}>
-            <Text style={styles.greeting}>Price: {param?.price}</Text>
+            <Text style={styles.greeting}>
+                Price:{' '}
+                {new Intl.NumberFormat('vi', {
+                    style: 'currency',
+                    currency: 'VND',
+                    minimumFractionDigits: 3,
+                    maximumFractionDigits: 3
+                }).format(travelTimeInformation.price)}
+            </Text>
             <View style={styles.panel}>
                 <View style={{ flexDirection: 'row', marginLeft: 30, paddingTop: 10 }}>
                     <View style={{ flexDirection: 'column', gap: 5 }}>
@@ -27,9 +38,9 @@ const DriverProcess = ({ navigation, param }) => {
                         <Text style={{ color: 'blue', fontWeight: 'bold' }}>Customer</Text>
                     </View>
                     <View style={{ flexDirection: 'column', marginLeft: 10, gap: 5 }}>
-                        <Text>Origin</Text>
-                        <Text>Destination</Text>
-                        <Text>00000</Text>
+                        <Text>{origin.description}</Text>
+                        <Text>{destination.description}</Text>
+                        <Text>{travelTimeInformation.phoneNumber}</Text>
                     </View>
                 </View>
                 {inProgress ? (
@@ -65,6 +76,8 @@ const DriverProcess = ({ navigation, param }) => {
                         <TouchableOpacity
                             style={[styles.button, { backgroundColor: 'red' }]}
                             onPress={() => {
+                                navigation.navigate('DriverHome');
+
                                 // send http
                             }}>
                             <Icon

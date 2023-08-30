@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import {
-    View,
-    Text,
-    SafeAreaView,
-    Keyboard,
-    Alert,
-    StyleSheet,
-    TouchableOpacity
-} from 'react-native';
+import { View, Text, SafeAreaView, Keyboard, StyleSheet, TouchableOpacity } from 'react-native';
 import Loader from '../components/Loader';
 import InputField from '../components/InputField';
 import CustomButton from '../components/CustomButton';
 import { Icon } from 'react-native-elements';
-import { useDispatch } from 'react-redux';
-import { setType, setUsername } from '../slices/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFCM, setType, setUsername } from '../slices/authSlice';
 
 const LoginScreen = ({ navigation }) => {
     const [inputs, setInputs] = React.useState({ email: '', password: '' });
@@ -23,6 +15,7 @@ const LoginScreen = ({ navigation }) => {
     const [type, setType_] = useState('');
     const [show, setShow] = useState(false);
     const dispatch = useDispatch();
+    const fcm = useSelector(selectFCM);
 
     useEffect(() => {
         setLoading(true);
@@ -60,7 +53,7 @@ const LoginScreen = ({ navigation }) => {
             email: inputs.email,
             password: inputs.password
         };
-        setLoading(false)
+        setLoading(false);
         dispatch(setType(type));
         // try {
         //     const response = await axios.post('/users/login', data);
@@ -68,19 +61,20 @@ const LoginScreen = ({ navigation }) => {
         //     if (response.status === 200) {
         //         console.log(response.data);
 
-
         //         //sent fcm
-
-        //         setLoading(false)
-        //         dispatch(setUsername(inputs.email))
-        //         dispatch(setFCM('FCM Token'));
-        //         dispatch(setType(type));
-        //         dispatch(setID(response.id))
-
-        //         return response.data;
+        //         try {
+        //             const res = await axios.post('/users/fcm', {
+        //                 user_id: response.data.user_id,
+        //                 fcmToken: fcm
+        //             });
+        //             if (response.status === 200) {
+        //                 setLoading(false)
+        //                 dispatch(setUsername(inputs.email))
+        //                 dispatch(setType(type));
+        //                 dispatch(setID(response.data.user_id))
+        //             }
+        //         } catch (err) {}
         //     }
-
-        //     console.log(response);
         // } catch (error) {
         //     if (error.response && error.response.data && error.response.data.message) {
         //         console.log(error.response.data.message);
@@ -88,9 +82,6 @@ const LoginScreen = ({ navigation }) => {
         //         console.log('Login failed');
         //     }
         // }
-
-
-
     };
 
     const handleOnchange = (text, input) => {

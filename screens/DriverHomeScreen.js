@@ -1,18 +1,63 @@
 import React from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Image, Pressable, ScrollView } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { GOOGLE_MAP_APIKEY } from '@env';
+import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { BottomTabs } from '../components/BottomNavigation';
-import DriverStack from '../stacks/DriverStack';
+import messaging from '@react-native-firebase/messaging';
+import { setDestination, setOrigin, setTravelTimeInformation } from '../slices/navSlice';
+
+// Maually send data:
+//  - Go to testfcm.com
+//  - Server key: AAAAj8UgZvw:APA91bEIhgBxNp93a1SZyl50mtaWrL6v06OlAL4k1DyujFyScczJjLHh9NaqOGMW62XwSdBPIrba1Qit6OPKspVtK5TzN956u3TWyFnBO-JVCVMHCtuXgZniTud9xYQ4RTrZO1Bb3AGq
+//  - FCM Token: In the console log
+//  - Input data into data field (format as {"key":"value"})
+
 const DriverHomeScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const handleNavigate = () => {
         navigation.navigate('DriverMap');
     };
+    useEffect(() => {
+        const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+            console.log(remoteMessage);
+            // const data = remoteMessage.data;
+
+            // dispatch(
+            //     setOrigin({
+            //         location: {
+            //             lat: data.pickup_location.latitude,
+            //             lng: data.pickup_location.longitude
+            //         },
+            //         description: data.pickup_location.description
+            //     })
+            // );
+
+            // dispatch(
+            //     setDestination({
+            //         location: {
+            //             lat: data.destination.latitude,
+            //             lng: data.destination.longitude
+            //         },
+            //         description: data.destination.description
+            //     })
+            // );
+
+            // dispatch(
+            //     setTravelTimeInformation({
+            //         price: { text: '0', value: data.total_price },
+            //         distance: { text: '0', value: data.total_distance },
+            //         phoneNumber: data.phoneNumber,
+            //          
+            //     })
+            // );
+
+            navigation.navigate('DriverMap');
+        });
+
+        return unsubscribe;
+    }, []);
     return (
         <SafeAreaView className="bg-white flex-1">
             <ScrollView>
@@ -116,9 +161,7 @@ const DriverHomeScreen = () => {
                                     icon="arrow-right"
                                     className="-ml-6 translate-x-4"
                                     labelStyle={{ fontSize: 25 }}
-                                    textColor="#1172FF">
-
-                                    </Button>
+                                    textColor="#1172FF"></Button>
                             </Pressable>
                         </View>
                         <View className="h-[1.5px] w-full bg-[#b3ccd3] rounded-full py-[.8px] my-6"></View>
