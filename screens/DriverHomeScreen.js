@@ -11,7 +11,7 @@ import { setDestination, setOrigin, setTravelTimeInformation } from '../slices/n
 //  - Go to testfcm.com
 //  - Server key: AAAAj8UgZvw:APA91bEIhgBxNp93a1SZyl50mtaWrL6v06OlAL4k1DyujFyScczJjLHh9NaqOGMW62XwSdBPIrba1Qit6OPKspVtK5TzN956u3TWyFnBO-JVCVMHCtuXgZniTud9xYQ4RTrZO1Bb3AGq
 //  - FCM Token: In the console log
-//  - Input data into data field (format as {"price":"500000"})
+//  - Input data into data field (format as {"key":"value"})
 
 const DriverHomeScreen = () => {
     const dispatch = useDispatch();
