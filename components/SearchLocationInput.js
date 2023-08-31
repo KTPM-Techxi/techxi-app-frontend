@@ -63,7 +63,7 @@ const SearchLocationInput = ({ textInputText = '', onLocationSelect }) => {
     };
 
     return (
-        <View className='flex-row p-2 bg-white rounded-lg border-2 border-green-400 shadow-xl'>
+        <View className='flex-row p-2 bg-white rounded-lg border-2 border-gray-300 shadow-xl'>
             <Image
                     source={{ uri: 'https://cdn-icons-png.flaticon.com/512/954/954591.png' }}
                     className = 'w-6 h-6 mx-2'
