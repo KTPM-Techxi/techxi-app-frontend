@@ -21,8 +21,9 @@ const NavigateCard = () => {
     }
 
     return (
-        <SafeAreaView style={styles.bg}>
+        <SafeAreaView className='bg-green-500' style={styles.bg}>
             <TouchableOpacity
+                className='bg-green-300'
                 onPress={() => {
                     // Open modal
                     //Add location to redux
@@ -30,28 +31,30 @@ const NavigateCard = () => {
                 style={styles.menu}>
                 <Icon name="menu" />
             </TouchableOpacity>
-            <Text style={styles.greeting}>Hello, User</Text>
-            <View style={styles.panel}>
-                <View>
+            <Text className='text-white font-bold p-2' style={styles.greeting}>Your Destination</Text>
+            <View className='bg-white' style={styles.panel}>
+                <View className='w-4/5 mx-auto my-2'>
                     <SearchLocationInput onLocationSelect={res => selectLocation(res)} />
                     
                 </View>
                 <View style={{ height: 200 }}>
                     <NavFavourites isOrigin={false} />
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'center', paddingBottom: 30 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                     <TouchableOpacity
+                    className ='bg-green-600'
                         style={styles.button}
                         onPress={() => {
                             navigation.navigate('RideOptionsCard');
                         }}>
                         <Icon
+                            className='ml-8 mr-2'
                             name="car"
                             type="font-awesome"
                             color="white"
                             size={16}
                         />
-                        <Text style={{ textAlign: 'center', color: 'white' }}>Ride</Text>
+                        <Text className='font-bold'style={{ textAlign: 'center', color: 'white' }}>Ride</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -63,13 +66,12 @@ export default NavigateCard;
 
 const styles = StyleSheet.create({
     bg: {
-        backgroundColor: '#ffffff',
         flexGrow: 1
     },
     greeting: {
         textAlign: 'center',
         paddingVertical: 5,
-        fontSize: 30
+        fontSize: 22
     },
     panel: {
         borderTopWidth: 1,
@@ -77,19 +79,16 @@ const styles = StyleSheet.create({
         flex: 1
     },
     button: {
-        backgroundColor: 'black',
         borderRadius: 50,
         flexDirection: 'row',
         width: 150,
-        justifyContent: 'space-around',
         paddingVertical: 10,
         paddingHorizontal: 20
     },
     menu: {
         position: 'absolute',
-        top: 2,
+        top: 6,
         right: 8,
-        backgroundColor: '#a9a9a9',
         zIndex: 50,
         padding: 3,
         borderRadius: 50,

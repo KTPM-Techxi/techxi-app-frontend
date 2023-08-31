@@ -14,7 +14,7 @@ const CustomerMapScreen = () => {
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity
-                className='bg-green-500'
+                className='bg-green-300'
                 onPress={() => navigation.navigate('HomeScreen')}
                 style={styles.menu}>
                 <Icon name="menu" />

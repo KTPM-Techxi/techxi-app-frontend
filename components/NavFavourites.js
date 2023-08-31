@@ -23,6 +23,7 @@ const NavFavourites = ({ isOrigin = true }) => {
 
     return (
         <FlatList
+            className ='mt-2'
             data={data}
             keyExtractor={(item) => item.id}
             ItemSeparatorComponent={() => {
