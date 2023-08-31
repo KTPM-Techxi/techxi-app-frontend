@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, View, StyleSheet, Image, Button} from 'react-native';
+import { SafeAreaView, Text, View, StyleSheet, Image, KeyboardAvoidingView} from 'react-native';
 import NavOptions from '../components/NavOptions';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useDispatch } from 'react-redux';
@@ -30,6 +30,10 @@ const HomeScreen = () => {
     };
 
     return (
+        <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={{ flex: 1 }}
+        >
         <SafeAreaView className='flex-1 bg-green-500'>
             <View className='w-5/6 pt-6 mx-auto flex-row align-middle justify-between'>
                     <View className='align-middle'><FontAwesomeIcon name="bars" size={30} color="white" /></View>
@@ -40,15 +44,21 @@ const HomeScreen = () => {
                         source={{uri: 'https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj'}}/>
                     </View>
             </View>
-            <View className='w-5/6 mt-4 mx-auto flex-auto shadow-2xl'>
-                <SearchLocationInput onLocationSelect={(res) => locationSelect(res)} />
+            <View className='w-1/5 mt-4 mx-auto'>
+            <Image 
+                        className='align-middle h-8 w-20 border-white'
+                        source={{uri: 'https://assets.grab.com/wp-content/uploads/media/ir/logo/Grab_Final_Master_Logo_2021_RGB_(white).png'}}/>
             </View>
-            <View className='w-5/6 mx-auto shadow-2xl flex justify-end'>
-                <View className ='w-1/3 flex-row my-auto mb-5 mx-auto rounded-md bg-green-600 border-2 border-green-400 p-2'>
-                    <Text className='mx-auto font-semibold text-white'>Favourites</Text>
-                    <FontAwesomeIcon name="star" size={20} color="yellow" /></View>
+            <View className='flex-row mt-4 mx-6'>
+                <View className='w-3/5 ml-4 flex-auto shadow-2xl'>
+                    <SearchLocationInput onLocationSelect={(res) => locationSelect(res)} />
+                </View>
+                <View className='w-1/5 shadow-2xl flex justify-end'>
+                    <View className ='flex-row my-auto mb-5 mx-auto rounded-md bg-green-600 border-2 border-green-400 p-2'>
+                        <FontAwesomeIcon name="star" size={20} color="yellow" /></View>
+                </View>
             </View>
-            <View className='h-3/4 bg-white rounded-3xl'>
+            <View className='mt-6 h-3/4 bg-white rounded-3xl'>
                 <View className='mx-6 mt-3 flex-row justify-between'>
                     <Text className='font-extrabold text-lg my-auto'>Transportation</Text>
                     <Text className='font-thin my-auto'>See all</Text>
@@ -97,7 +107,7 @@ const HomeScreen = () => {
                 </View>
             </View>
         </SafeAreaView>
-        
+        </KeyboardAvoidingView>
     );
 };
 
