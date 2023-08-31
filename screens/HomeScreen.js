@@ -52,8 +52,8 @@ const HomeScreen = () => {
                     <Text className='font-extrabold text-lg my-auto'>Transportation</Text>
                     <Text className='font-thin my-auto'>See all</Text>
                 </View>
-                <View className='mx-4 flex-row flex-wrap justify-around'>
-                    <View className='rounded-lg my-2 border-2 bg-green-400 border-green-500 mt-2 w-2/5 h-2/5'>
+                <View className='mx-4 flex-row flex-wrap justify-around' >
+                    <View className='rounded-lg my-2 border-2 bg-green-400 border-green-500 mt-2 w-2/5 h-2/5' >
                         <Image 
                         className='h-1/2 w-3/4 mx-auto mt-2 mb-1'
                         source={{uri: 'https://links.papareact.com/3pn'}}/>

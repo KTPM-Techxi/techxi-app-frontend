@@ -18,15 +18,21 @@ const SURGE_RATE = 1.5;
 const ReduxData = [
     {
         id: 'Uber-X-123',
-        title: 'Uder X',
+        title: 'Grab X',
         multiplier: 1,
         image: 'https://links.papareact.com/3pn'
     },
     {
         id: 'Uber-XL-123',
-        title: 'Uder XL',
+        title: 'Grab XL',
         multiplier: 1.25,
         image: 'https://links.papareact.com/5W8'
+    },
+    {
+        id: 'Grab-Bike',
+        title: 'Bike',
+        multiplier: 1.25,
+        image: 'https://freepngimg.com/save/23276-motorbike-transparent/1024x768'
     }
 ];
 
@@ -46,6 +52,7 @@ const RideOptionsCard = () => {
     return (
         <SafeAreaView style={{ backgroundColor: '#ffffff', flexGrow: 1 }}>
             <TouchableOpacity
+                className='bg-green-300'
                 onPress={() => {
                     // Open modal
                     //Add destination to redux
@@ -60,7 +67,7 @@ const RideOptionsCard = () => {
                     }}
                     style={{
                         position: 'absolute',
-                        top: 3,
+                        top: 8,
                         left: 5,
                         padding: 3,
                         borderRadius: 50,
@@ -69,10 +76,11 @@ const RideOptionsCard = () => {
                     <Icon
                         name="chevron-left"
                         type="fontawesome"
+                        color={"white"}
                     />
                 </TouchableOpacity>
-                <Text style={{ textAlign: 'center', paddingVertical: 5, fontSize: 20 }}>
-                    Select a ride - {travelTimeInformation?.distance?.text}
+                <Text className='font-bold bg-green-500 p-2 text-white' style={{ textAlign: 'center', paddingVertical: 5, fontSize: 22 }}>
+                    Select a ride {travelTimeInformation?.distance?.text}
                 </Text>
             </View>
             <FlatList
@@ -80,17 +88,18 @@ const RideOptionsCard = () => {
                 keyExtractor={(item) => item.id}
                 renderItem={({ item: { id, title, price, image }, item }) => (
                     <TouchableOpacity
-                        style={[id === selected?.id && { backgroundColor: '#a9a9a9' }, styles.tab]}
+                        className='justify-between border-2 border-green-400 mx-4 mt-2 rounded-xl bg-white'
+                        style={[id === selected?.id && { backgroundColor: '#99ff99' }, styles.tab]}
                         onPress={() => setSelected(item)}>
                         <Image
-                            style={{ width: 100, height: 100, resizeMode: 'contain' }}
+                            className='align-middle h-14 w-20 border-white my-auto'
                             source={{ uri: image }}
                         />
-                        <View style={{ marginLeft: -6 }}>
-                            <Text style={{ fontSize: 30, fontWeight: 'bold' }}>{title}</Text>
+                        <View className='text-left'>
+                            <Text className='text-left font-bold my-auto pt-4 mr-20' style={{ fontSize: 20}}>{title}</Text>
                             <Text>{travelTimeInformation?.duration?.text}</Text>
                         </View>
-                        <Text style={{ fontSize: 20 }}>
+                        <Text className='' style={{ fontSize: 20 }}>
                             {new Intl.NumberFormat('vi', {
                                 style: 'currency',
                                 currency: 'VND',
@@ -105,13 +114,14 @@ const RideOptionsCard = () => {
                 <TouchableOpacity
                     disabled={!selected}
                     onPress={() => {
-                        navigation.navigate('InProgress');
+                        navigation.navigate('HomeScreen');
                     }}
+                    className = 'w-3/5 mx-auto rounded-lg mb-4 mt-4'
                     style={[
-                        { backgroundColor: 'black', paddingVertical: 3, margin: 3 },
-                        !selected && { backgroundColor: '#a9a9a9' }
+                        { backgroundColor: '#00b300', paddingVertical: 3, margin: 3 },
+                        !selected && { backgroundColor: '' }
                     ]}>
-                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 30 }}>
+                    <Text className='' style={{ textAlign: 'center', color: 'white', fontSize: 18 }}>
                         Choose {selected?.title}
                     </Text>
                 </TouchableOpacity>
@@ -126,14 +136,12 @@ const styles = StyleSheet.create({
     tab: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
         paddingHorizontal: 10
     },
     menu: {
         position: 'absolute',
-        top: 2,
+        top: 8,
         right: 8,
-        backgroundColor: '#a9a9a9',
         zIndex: 50,
         padding: 3,
         borderRadius: 50,
