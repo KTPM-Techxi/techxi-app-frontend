@@ -14,6 +14,7 @@ const CustomerMapScreen = () => {
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity
+                className='bg-green-500'
                 onPress={() => navigation.navigate('HomeScreen')}
                 style={styles.menu}>
                 <Icon name="menu" />
@@ -48,7 +49,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 35,
         left: 8,
-        backgroundColor: '#a9a9a9',
         zIndex: 50,
         padding: 3,
         borderRadius: 50,
