@@ -38,9 +38,9 @@ const HomeScreen = () => {
             <View className='w-5/6 pt-6 mx-auto flex-row align-middle justify-between'>
                     <View className='align-middle'><FontAwesomeIcon name="bars" size={30} color="white" /></View>
                     <View className='flex-row '>
-                        <Text className='text-white font-extrabold mx-2 my-auto'>Hello Khang</Text>
+                        <Text className='text-white text-xs font-extrabold mx-2 my-auto'>Hello Khang</Text>
                         <Image 
-                        className='align-middle rounded-full h-8 w-8 border-white'
+                        className='align-middle rounded-full h-10 w-10 border-white'
                         source={{uri: 'https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj'}}/>
                     </View>
             </View>
@@ -58,7 +58,7 @@ const HomeScreen = () => {
                         <FontAwesomeIcon name="star" size={20} color="yellow" /></View>
                 </View>
             </View>
-            <View className='mt-6 h-3/4 bg-white rounded-3xl'>
+            <View className='mt-5 h-3/4 bg-white rounded-3xl'>
                 <View className='mx-6 mt-3 flex-row justify-between'>
                     <Text className='font-extrabold text-lg my-auto'>Transportation</Text>
                     <Text className='font-thin my-auto'>See all</Text>
