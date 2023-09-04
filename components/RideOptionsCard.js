@@ -31,7 +31,7 @@ const ReduxData = [
     {
         id: 'Grab-Bike',
         title: 'Bike',
-        multiplier: 1.25,
+        multiplier: 0.6,
         image: 'https://freepngimg.com/save/23276-motorbike-transparent/1024x768'
     }
 ];
@@ -95,11 +95,11 @@ const RideOptionsCard = () => {
                             className='align-middle h-14 w-20 border-white my-auto'
                             source={{ uri: image }}
                         />
-                        <View className='text-left'>
-                            <Text className='text-left font-bold my-auto pt-4 mr-20' style={{ fontSize: 20}}>{title}</Text>
-                            <Text>{travelTimeInformation?.duration?.text}</Text>
+                        <View className='w-20 justify-self-start my-auto'>
+                            <Text className='text-left font-bold' style={{ fontSize: 20}}>{title}</Text>
+                            <Text className=''>{travelTimeInformation?.duration?.text}</Text>
                         </View>
-                        <Text className='' style={{ fontSize: 20 }}>
+                        <Text className='font-semibold' style={{ fontSize: 20 }}>
                             {new Intl.NumberFormat('vi', {
                                 style: 'currency',
                                 currency: 'VND',

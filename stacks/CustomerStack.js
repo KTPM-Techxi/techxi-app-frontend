@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import 'react-native-gesture-handler';
 import CustomerMapScreen from '../screens/CustomerMapScreen';
+import StatScreen from '../screens/StatScreen';
 
 export default CustomerStack = () => {
     const Stack = createNativeStackNavigator();
@@ -17,6 +18,10 @@ export default CustomerStack = () => {
             <Stack.Screen
                 name="MapScreen"
                 component={CustomerMapScreen}
+            />
+            <Stack.Screen
+                name="StatScreen"
+                component={StatScreen}
             />
         </Stack.Navigator>
     );
