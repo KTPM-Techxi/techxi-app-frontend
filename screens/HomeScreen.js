@@ -1,10 +1,13 @@
 import React from 'react';
-import { SafeAreaView, Text, View, StyleSheet, Image, KeyboardAvoidingView} from 'react-native';
+import { SafeAreaView, Text, View, Image, TouchableOpacity} from 'react-native';
 import { useDispatch } from 'react-redux';
 import { setDestination, setOrigin } from '../slices/navSlice';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import SearchLocationInput from '../components/SearchLocationInput';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+
+
+  
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
@@ -22,12 +25,19 @@ const HomeScreen = () => {
         navigation.navigate('MapScreen');
     };
 
+    const statScreenNavigate = () => {
+        console.log("clicked")
+        navigation.navigate('StatScreen'); // Replace 'StatsScreen' with the name of your screen
+      };
+
     return (
         <SafeAreaView className='flex-1 bg-green-500'>
-            <View className='w-5/6 pt-6 mx-auto flex-row align-middle justify-between'>
-                    <View className='align-middle'><FontAwesomeIcon name="bars" size={30} color="white" /></View>
+            <View className='w-5/6 mt-8 mx-auto flex-row align-middle justify-between'>
+                    <TouchableOpacity onPress={()=>navigation.navigate('StatScreen')}>
+                       <FontAwesomeIcon name='pie-chart' size={30} color="white"/>
+                    </TouchableOpacity>
                     <View className='flex-row '>
-                        <Text className='text-white text-xs font-extrabold mx-2 my-auto'>Hello Khang</Text>
+                        <Text className='text-white text-sm font-extrabold mx-2 my-auto'>Hello Khang</Text>
                         <Image 
                         className='align-middle rounded-full h-10 w-10 border-white'
                         source={{uri: 'https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj'}}/>
