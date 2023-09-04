@@ -6,14 +6,15 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Icon } from 'react-native-elements';
 import { selectDestination, selectOrigin, selectTravelTimeInformation } from '../slices/navSlice';
+import { useState } from 'react';
 
-const DriverProcess = () => {
+const DriverProcess = ({route, navigation}) => {
     const dispatch = useDispatch();
-    const navigation = useNavigation();
     const [inProgress, setInProgress] = useState(false);
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
     const origin = useSelector(selectOrigin);
     const destination = useSelector(selectDestination);
+    const {phoneNumber, fcmToken} = route.params
     return (
         <SafeAreaView style={styles.bg}>
             <Text style={styles.greeting}>
@@ -40,7 +41,7 @@ const DriverProcess = () => {
                     <View style={{ flexDirection: 'column', marginLeft: 10, gap: 5 }}>
                         <Text>{origin.description}</Text>
                         <Text>{destination.description}</Text>
-                        <Text>{travelTimeInformation.phoneNumber}</Text>
+                        <Text>{phoneNumber}</Text>
                     </View>
                 </View>
                 {inProgress ? (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, Image, Pressable, ScrollView } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
@@ -6,6 +6,7 @@ import { Button } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import messaging from '@react-native-firebase/messaging';
 import { setDestination, setOrigin, setTravelTimeInformation } from '../slices/navSlice';
+import { setType } from '../slices/authSlice';
 
 // Maually send data:
 //  - Go to testfcm.com
@@ -22,38 +23,39 @@ const DriverHomeScreen = () => {
     useEffect(() => {
         const unsubscribe = messaging().onMessage(async (remoteMessage) => {
             console.log(remoteMessage);
-            // const data = remoteMessage.data;
+            const data = remoteMessage.data;
 
-            // dispatch(
-            //     setOrigin({
-            //         location: {
-            //             lat: data.pickup_location.latitude,
-            //             lng: data.pickup_location.longitude
-            //         },
-            //         description: data.pickup_location.description
-            //     })
-            // );
+            dispatch(
+                setOrigin({
+                    location: {
+                        lat: 0, //data.pickup_location.latitude,
+                        lng: 0, //data.pickup_location.longitude
+                    },
+                    description: 0, //data.pickup_location.description
+                })
+            );
 
-            // dispatch(
-            //     setDestination({
-            //         location: {
-            //             lat: data.destination.latitude,
-            //             lng: data.destination.longitude
-            //         },
-            //         description: data.destination.description
-            //     })
-            // );
+            dispatch(
+                setDestination({
+                    location: {
+                        lat: 0, //data.destination.latitude,
+                        lng: 0, //data.destination.longitude
+                    },
+                    description: 0, //data.destination.description
+                })
+            );
 
             // dispatch(
             //     setTravelTimeInformation({
             //         price: { text: '0', value: data.total_price },
             //         distance: { text: '0', value: data.total_distance },
-            //         phoneNumber: data.phoneNumber,
-            //          
+           //          
             //     })
             // );
 
-            navigation.navigate('DriverMap');
+            // navigation.navigate('DriverMap', {fcmToken: data.fcmToken, phoneNumber: data.phoneNumber});
+            // navigation.navigate('DriverMap');
+
         });
 
         return unsubscribe;
@@ -69,6 +71,9 @@ const DriverHomeScreen = () => {
                         <Text className="text-2xl font-bold text-white">Dashboard</Text>
                         <TouchableOpacity>
                             <Button
+                                onPress={()=>{
+                                    dispatch(setType(null))
+                                }}
                                 textColor="white"
                                 icon="menu"
                                 labelStyle={{ fontSize: 30 }}
