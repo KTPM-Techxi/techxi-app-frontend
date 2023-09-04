@@ -8,7 +8,6 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { LineChart } from 'react-native-chart-kit';
 
-<<<<<<< Updated upstream
 const data = {
     labels: ["January", "February", "March", "April", "May", "June"],
     datasets: [
@@ -31,8 +30,6 @@ const chartConfig = {
     barPercentage: 0.5,
     useShadowColorFromDataset: false // optional
 };
-=======
->>>>>>> Stashed changes
 
 const StatScreen = () => {
     const navigation = useNavigation();
@@ -57,15 +54,6 @@ const StatScreen = () => {
             </View>
 
             <View>
-<<<<<<< Updated upstream
-                <LineChart
-                    data={data}
-                    width={350}
-                    height={220}
-                    chartConfig={chartConfig}
-                />
-=======
->>>>>>> Stashed changes
             </View>
         </SafeAreaView>
     );
